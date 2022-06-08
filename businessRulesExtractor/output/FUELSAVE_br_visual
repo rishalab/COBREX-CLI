@@ -1,0 +1,237 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="accept old-eff-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"old-eff-in" [label="old-eff-in"]
+	"old-eff-in" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	3 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+"]
+	4 [label="display \"Old Efficiency\" not-numeric
+"]
+	3 -> 4 [label=true]
+	6 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+"]
+	7 [label="display \"New Efficiency\" not-numeric
+"]
+	6 -> 7 [label=true]
+	3 -> 6 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"not-numeric" [label="not-numeric"]
+	"not-numeric" -> 3 [label=start]
+	node [color=lightblue shape=box style=filled]
+	10 [label="if oldeff < min-val
+"]
+	11 [label="display quantity-too-small
+"]
+	10 -> 11 [label=true]
+	13 [label="if neweff < min-val
+"]
+	14 [label="display quantity-too-small
+"]
+	13 -> 14 [label=true]
+	10 -> 13 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-too-small" [label="quantity-too-small"]
+	"quantity-too-small" -> 10 [label=start]
+	node [color=lightblue shape=box style=filled]
+	17 [label="if oldeff > max-val
+"]
+	19 [label="if neweff > max-val
+"]
+	17 -> 19 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"max-val" [label="max-val"]
+	"max-val" -> 17 [label=start]
+	node [color=lightblue shape=box style=filled]
+	22 [label="subtract oldeff from neweff giving numerator
+"]
+	23 [label="divide numerator by neweff giving pcteff rounded
+"]
+	22 -> 23 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	numerator [label=numerator]
+	numerator -> 22 [label=start]
+	node [color=lightblue shape=box style=filled]
+	25 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+"]
+	27 [label="compute neweff = function numval ( new-eff-in )
+"]
+	28 [label="if neweff = 0
+"]
+	30 [label="if neweff < min-val
+"]
+	32 [label="if neweff > max-val
+"]
+	34 [label="if neweff = oldeff
+"]
+	36 [label="if neweff < oldeff
+"]
+	38 [label="subtract oldeff from neweff giving numerator
+"]
+	39 [label="divide numerator by neweff giving pcteff rounded
+"]
+	40 [label="move neweff to new-eff-out
+"]
+	39 -> 40 [label="sequential next"]
+	38 -> 39 [label="sequential next"]
+	36 -> 38 [label=false]
+	34 -> 36 [label=false]
+	32 -> 34 [label=false]
+	30 -> 32 [label=false]
+	28 -> 30 [label=false]
+	27 -> 28 [label="sequential next"]
+	25 -> 27 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	neweff [label=neweff]
+	neweff -> 25 [label=start]
+	node [color=lightblue shape=box style=filled]
+	42 [label="if neweff = oldeff
+"]
+	43 [label="display quantities-equal1 quantities-equal2
+"]
+	42 -> 43 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantities-equal2" [label="quantities-equal2"]
+	"quantities-equal2" -> 42 [label=start]
+	node [color=lightblue shape=box style=filled]
+	46 [label="divide numerator by neweff giving pcteff rounded
+"]
+	47 [label="multiply 100 by pcteff
+"]
+	48 [label="move pcteff to pct-eff-out
+"]
+	47 -> 48 [label="sequential next"]
+	46 -> 47 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	pcteff [label=pcteff]
+	pcteff -> 46 [label=start]
+	node [color=lightblue shape=box style=filled]
+	50 [label="accept new-eff-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"new-eff-in" [label="new-eff-in"]
+	"new-eff-in" -> 50 [label=start]
+	node [color=lightblue shape=box style=filled]
+	52 [label="move neweff to new-eff-out
+"]
+	53 [label="display \"New Efficiency: \" new-eff-out \"%\"
+"]
+	52 -> 53 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"new-eff-out" [label="new-eff-out"]
+	"new-eff-out" -> 52 [label=start]
+	node [color=lightblue shape=box style=filled]
+	55 [label="if neweff < oldeff
+"]
+	56 [label="display quantity-lower1 quantity-lower2
+"]
+	55 -> 56 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-lower1" [label="quantity-lower1"]
+	"quantity-lower1" -> 55 [label=start]
+	node [color=lightblue shape=box style=filled]
+	59 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(old-eff-in)" [label="functiontest-numval(old-eff-in)"]
+	"functiontest-numval(old-eff-in)" -> 59 [label=start]
+	node [color=lightblue shape=box style=filled]
+	62 [label="if neweff = oldeff
+"]
+	63 [label="display quantities-equal1 quantities-equal2
+"]
+	62 -> 63 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantities-equal1" [label="quantities-equal1"]
+	"quantities-equal1" -> 62 [label=start]
+	node [color=lightblue shape=box style=filled]
+	66 [label="move oldeff to old-eff-out
+"]
+	67 [label="display \"Old Efficiency: \" old-eff-out \"%\"
+"]
+	66 -> 67 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"old-eff-out" [label="old-eff-out"]
+	"old-eff-out" -> 66 [label=start]
+	node [color=lightblue shape=box style=filled]
+	69 [label="if neweff < oldeff
+"]
+	70 [label="display quantity-lower1 quantity-lower2
+"]
+	69 -> 70 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-lower2" [label="quantity-lower2"]
+	"quantity-lower2" -> 69 [label=start]
+	node [color=lightblue shape=box style=filled]
+	73 [label="if oldeff < min-val
+"]
+	75 [label="if neweff < min-val
+"]
+	73 -> 75 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"min-val" [label="min-val"]
+	"min-val" -> 73 [label=start]
+	node [color=lightblue shape=box style=filled]
+	78 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(new-eff-in)" [label="functiontest-numval(new-eff-in)"]
+	"functiontest-numval(new-eff-in)" -> 78 [label=start]
+	node [color=lightblue shape=box style=filled]
+	81 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+"]
+	83 [label="compute oldeff = function numval ( old-eff-in )
+"]
+	84 [label="if oldeff = 0
+"]
+	86 [label="if oldeff < min-val
+"]
+	88 [label="if oldeff > max-val
+"]
+	90 [label="if neweff = oldeff
+"]
+	92 [label="if neweff < oldeff
+"]
+	94 [label="subtract oldeff from neweff giving numerator
+"]
+	95 [label="move oldeff to old-eff-out
+"]
+	94 -> 95 [label="sequential next"]
+	92 -> 94 [label=false]
+	90 -> 92 [label=false]
+	88 -> 90 [label=false]
+	86 -> 88 [label=false]
+	84 -> 86 [label=false]
+	83 -> 84 [label="sequential next"]
+	81 -> 83 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	oldeff [label=oldeff]
+	oldeff -> 81 [label=start]
+	node [color=lightblue shape=box style=filled]
+	97 [label="move pcteff to pct-eff-out
+"]
+	98 [label="display \"Fuel Savings: \" pct-eff-out \"%\"
+"]
+	97 -> 98 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pct-eff-out" [label="pct-eff-out"]
+	"pct-eff-out" -> 97 [label=start]
+	node [color=lightblue shape=box style=filled]
+	100 [label="if oldeff > max-val
+"]
+	101 [label="display quantity-too-much
+"]
+	100 -> 101 [label=true]
+	103 [label="if neweff > max-val
+"]
+	104 [label="display quantity-too-much
+"]
+	103 -> 104 [label=true]
+	100 -> 103 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-too-much" [label="quantity-too-much"]
+	"quantity-too-much" -> 100 [label=start]
+}

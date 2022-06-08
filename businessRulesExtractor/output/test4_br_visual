@@ -1,0 +1,147 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-EXT-EMPLOYEE-NUM" [label="SORT-EXT-EMPLOYEE-NUM"]
+	"SORT-EXT-EMPLOYEE-NUM" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	6 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-RECORD" [label="SORT-RECORD"]
+	"SORT-RECORD" -> 6 [label=start]
+	node [color=lightblue shape=box style=filled]
+	11 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-KEY" [label="SORT-KEY"]
+	"SORT-KEY" -> 11 [label=start]
+	node [color=lightblue shape=box style=filled]
+	16 [label="SORT SORT-FILE ON ASCENDING KEY SORT-GRID-LOCATION SORT-SHIFT INPUT PROCEDURE 600-SORT3-INPUT OUTPUT PROCEDURE 700-SORT3-OUTPUT
+"]
+	17 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	17 -> 16 [label="perform-exit"]
+	16 -> 17 [label="procedure call"]
+	16 -> 16 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-SHIFT" [label="SORT-SHIFT"]
+	"SORT-SHIFT" -> 16 [label=start]
+	node [color=lightblue shape=box style=filled]
+	24 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	27 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	24 -> 27 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-SHIFT" [label="WS-SHIFT"]
+	"WS-SHIFT" -> 24 [label=start]
+	node [color=lightblue shape=box style=filled]
+	32 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-EXT-NAME" [label="SORT-EXT-NAME"]
+	"SORT-EXT-NAME" -> 32 [label=start]
+	node [color=lightblue shape=box style=filled]
+	37 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	40 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	37 -> 40 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-REPORT" [label="WS-REPORT"]
+	"WS-REPORT" -> 37 [label=start]
+	node [color=lightblue shape=box style=filled]
+	45 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	48 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	45 -> 48 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"TAB-ENTRY" [label="TAB-ENTRY"]
+	"TAB-ENTRY" -> 45 [label=start]
+	node [color=lightblue shape=box style=filled]
+	53 [label="SORT SORT-FILE ON ASCENDING KEY SORT-GRID-LOCATION SORT-SHIFT INPUT PROCEDURE 600-SORT3-INPUT OUTPUT PROCEDURE 700-SORT3-OUTPUT
+"]
+	53 -> 53 [label="procedure call"]
+	56 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	56 -> 53 [label="perform-exit"]
+	53 -> 56 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-FILE" [label="SORT-FILE"]
+	"SORT-FILE" -> 53 [label=start]
+	node [color=lightblue shape=box style=filled]
+	62 [label="SORT SORT-FILE ON ASCENDING KEY SORT-GRID-LOCATION SORT-SHIFT INPUT PROCEDURE 600-SORT3-INPUT OUTPUT PROCEDURE 700-SORT3-OUTPUT
+"]
+	63 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	63 -> 62 [label="perform-exit"]
+	62 -> 63 [label="procedure call"]
+	62 -> 62 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-GRID-LOCATION" [label="SORT-GRID-LOCATION"]
+	"SORT-GRID-LOCATION" -> 62 [label=start]
+	node [color=lightblue shape=box style=filled]
+	70 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-EXT-RECORD" [label="SORT-EXT-RECORD"]
+	"SORT-EXT-RECORD" -> 70 [label=start]
+	node [color=lightblue shape=box style=filled]
+	75 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	78 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	75 -> 78 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-GRID-LOCATION" [label="WS-GRID-LOCATION"]
+	"WS-GRID-LOCATION" -> 75 [label=start]
+	node [color=lightblue shape=box style=filled]
+	83 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"SORT-REPORT" [label="SORT-REPORT"]
+	"SORT-REPORT" -> 83 [label=start]
+	node [color=lightblue shape=box style=filled]
+	88 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	91 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	88 -> 91 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-EXT-EMPLOYEE-NUM" [label="WS-EXT-EMPLOYEE-NUM"]
+	"WS-EXT-EMPLOYEE-NUM" -> 88 [label=start]
+	node [color=lightblue shape=box style=filled]
+	96 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	99 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	96 -> 99 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-EXT-NAME" [label="WS-EXT-NAME"]
+	"WS-EXT-NAME" -> 96 [label=start]
+	node [color=lightblue shape=box style=filled]
+	104 [label="PERFORM VARYING TAB-INDX FROM 1 BY 1 UNTIL TAB-INDX > 10
+"]
+	104 -> 104 [label=iteration]
+	108 [label="PERFORM VARYING TAB-INDX FROM 1 BY 1 UNTIL TAB-INDX > 10
+"]
+	108 -> 108 [label=iteration]
+	108 -> 108 [label=iteration]
+	104 -> 108 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	"TAB-INDX" [label="TAB-INDX"]
+	"TAB-INDX" -> 104 [label=start]
+	node [color=lightblue shape=box style=filled]
+	114 [label="RELEASE SORT-RECORD FROM TAB-ENTRY
+"]
+	117 [label="RETURN SORT-FILE INTO TAB-ENTRY
+"]
+	114 -> 117 [label="procedure call"]
+	node [color=lightgrey shape=diamond style=filled]
+	FILLER [label=FILLER]
+	FILLER -> 114 [label=start]
+}

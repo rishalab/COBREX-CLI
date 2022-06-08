@@ -1,0 +1,155 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="OPEN I-O PEOPLE-RW
+"]
+	2 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	3 [label="CLOSE PEOPLE-RW
+"]
+	2 -> 3 [label=InvalidKey]
+	2 -> 3 [label=NotInvalidKey]
+	2 -> 3 [label="sequential next"]
+	1 -> 2 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PEOPLE-RW" [label="PEOPLE-RW"]
+	"PEOPLE-RW" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	9 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-PEOPLE-FILE-IN-NAME" [label="WS-PEOPLE-FILE-IN-NAME"]
+	"WS-PEOPLE-FILE-IN-NAME" -> 9 [label=start]
+	node [color=lightblue shape=box style=filled]
+	13 [label="READ IN-PUT INTO WS-INPUT
+"]
+	15 [label="MOVE WS-INPUT-CPF TO WS-CPF
+"]
+	13 -> 15 [label=NotAtEnd]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-INPUT-CPF" [label="WS-INPUT-CPF"]
+	"WS-INPUT-CPF" -> 13 [label=start]
+	node [color=lightblue shape=box style=filled]
+	19 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-PEOPLE-FILE-IN-SENHA" [label="WS-PEOPLE-FILE-IN-SENHA"]
+	"WS-PEOPLE-FILE-IN-SENHA" -> 19 [label=start]
+	node [color=lightblue shape=box style=filled]
+	23 [label="READ IN-PUT INTO WS-INPUT
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-INPUT" [label="WS-INPUT"]
+	"WS-INPUT" -> 23 [label=start]
+	node [color=lightblue shape=box style=filled]
+	28 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-PEOPLE-FILE-IN-CPF" [label="WS-PEOPLE-FILE-IN-CPF"]
+	"WS-PEOPLE-FILE-IN-CPF" -> 28 [label=start]
+	node [color=lightblue shape=box style=filled]
+	32 [label="WRITE EXISTS-RW-FILE
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"EXISTS-RW-FILE" [label="EXISTS-RW-FILE"]
+	"EXISTS-RW-FILE" -> 32 [label=start]
+	node [color=lightblue shape=box style=filled]
+	36 [label="OPEN INPUT IN-PUT
+"]
+	37 [label="READ IN-PUT INTO WS-INPUT
+"]
+	41 [label="CLOSE IN-PUT
+"]
+	37 -> 41 [label="perform-exit"]
+	36 -> 37 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"IN-PUT" [label="IN-PUT"]
+	"IN-PUT" -> 36 [label=start]
+	node [color=lightblue shape=box style=filled]
+	43 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-PEOPLE-FILE-IN" [label="WS-PEOPLE-FILE-IN"]
+	"WS-PEOPLE-FILE-IN" -> 43 [label=start]
+	node [color=lightblue shape=box style=filled]
+	47 [label="MOVE WS-EXSIST TO EXISTS-RW-ERROR
+"]
+	48 [label="WRITE EXISTS-RW-FILE
+"]
+	47 -> 48 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"EXISTS-RW-ERROR" [label="EXISTS-RW-ERROR"]
+	"EXISTS-RW-ERROR" -> 47 [label=start]
+	node [color=lightblue shape=box style=filled]
+	52 [label="READ IN-PUT INTO WS-INPUT
+"]
+	54 [label="MOVE WS-INPUT-CPF TO WS-CPF
+"]
+	52 -> 54 [label=NotAtEnd]
+	57 [label="DISPLAY WS-CPF
+"]
+	58 [label="MOVE WS-CPF TO PEOPLE-RW-CPF
+"]
+	57 -> 58 [label="sequential next"]
+	52 -> 57 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-CPF" [label="WS-CPF"]
+	"WS-CPF" -> 52 [label=start]
+	node [color=lightblue shape=box style=filled]
+	60 [label="OPEN EXTEND EXISTS-RW
+"]
+	61 [label="CLOSE EXISTS-RW
+"]
+	60 -> 61 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"EXISTS-RW" [label="EXISTS-RW"]
+	"EXISTS-RW" -> 60 [label=start]
+	node [color=lightblue shape=box style=filled]
+	65 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-PEOPLE-FILE-IN-TELEFONE" [label="WS-PEOPLE-FILE-IN-TELEFONE"]
+	"WS-PEOPLE-FILE-IN-TELEFONE" -> 65 [label=start]
+	node [color=lightblue shape=box style=filled]
+	69 [label="MOVE WS-CPF TO PEOPLE-RW-CPF
+"]
+	70 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	69 -> 70 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PEOPLE-RW-CPF" [label="PEOPLE-RW-CPF"]
+	"PEOPLE-RW-CPF" -> 69 [label=start]
+	node [color=lightblue shape=box style=filled]
+	74 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	75 [label="MOVE \"0\" TO WS-EXSIST
+"]
+	76 [label="DISPLAY WS-EXSIST
+"]
+	77 [label="MOVE WS-EXSIST TO EXISTS-RW-ERROR
+"]
+	76 -> 77 [label="sequential next"]
+	75 -> 76 [label="sequential next"]
+	74 -> 75 [label=InvalidKey]
+	79 [label="MOVE \"1\" TO WS-EXSIST
+"]
+	74 -> 79 [label=NotInvalidKey]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-EXSIST" [label="WS-EXSIST"]
+	"WS-EXSIST" -> 74 [label=start]
+	node [color=lightblue shape=box style=filled]
+	82 [label="PERFORM UNTIL WS-EOF = 'Y'
+"]
+	83 [label="READ IN-PUT INTO WS-INPUT
+"]
+	84 [label="MOVE 'Y' TO WS-EOF
+"]
+	84 -> 82 [label="sequential next"]
+	83 -> 84 [label=AtEnd]
+	83 -> 82 [label=NotAtEnd]
+	83 -> 82 [label="sequential next"]
+	82 -> 83 [label=iteration]
+	node [color=lightgrey shape=diamond style=filled]
+	"WS-EOF" [label="WS-EOF"]
+	"WS-EOF" -> 82 [label=start]
+}

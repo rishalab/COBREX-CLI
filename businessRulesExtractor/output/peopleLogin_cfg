@@ -1,0 +1,67 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="OPEN INPUT IN-PUT
+"]
+	2 [label="PERFORM UNTIL WS-EOF = 'Y'
+"]
+	3 [label="READ IN-PUT INTO WS-INPUT
+"]
+	6 [label="MOVE 'Y' TO WS-EOF
+"]
+	6 -> 2 [label="sequential next"]
+	3 -> 6 [label=AtEnd]
+	8 [label="MOVE WS-INPUT-CPF TO WS-CPF
+"]
+	9 [label="DISPLAY 'AQUI'
+"]
+	9 -> 2 [label="sequential next"]
+	8 -> 9 [label="sequential next"]
+	3 -> 8 [label=NotAtEnd]
+	3 -> 2 [label="sequential next"]
+	2 -> 3 [label=iteration]
+	4 [label="CLOSE IN-PUT
+"]
+	11 [label="DISPLAY WS-CPF
+"]
+	12 [label="OPEN I-O PEOPLE-RW
+"]
+	13 [label="MOVE WS-CPF TO PEOPLE-RW-CPF
+"]
+	14 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	15 [label="CLOSE PEOPLE-RW
+"]
+	20 [label="DISPLAY WS-EXSIST
+"]
+	21 [label="OPEN EXTEND EXISTS-RW
+"]
+	22 [label="MOVE WS-EXSIST TO EXISTS-RW-ERROR
+"]
+	23 [label="WRITE EXISTS-RW-FILE
+"]
+	24 [label="CLOSE EXISTS-RW
+"]
+	25 [label=goback
+]
+	24 -> 25 [label="sequential next"]
+	23 -> 24 [label="sequential next"]
+	22 -> 23 [label="sequential next"]
+	21 -> 22 [label="sequential next"]
+	20 -> 21 [label="sequential next"]
+	15 -> 20 [label="sequential next"]
+	14 -> 15 [label="sequential next"]
+	16 [label="MOVE \"0\" TO WS-EXSIST
+"]
+	16 -> 15 [label="sequential next"]
+	14 -> 16 [label=InvalidKey]
+	18 [label="MOVE \"1\" TO WS-EXSIST
+"]
+	18 -> 15 [label="sequential next"]
+	14 -> 18 [label=NotInvalidKey]
+	13 -> 14 [label="sequential next"]
+	12 -> 13 [label="sequential next"]
+	11 -> 12 [label="sequential next"]
+	4 -> 11 [label="sequential next"]
+	2 -> 4 [label="perform-exit"]
+	1 -> 2 [label="sequential next"]
+}

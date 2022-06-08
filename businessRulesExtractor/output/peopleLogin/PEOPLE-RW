@@ -1,0 +1,14 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	14 [label="READ PEOPLE-RW INTO WS-PEOPLE-FILE-IN KEY IS PEOPLE-RW-CPF
+"]
+	15 [label="CLOSE PEOPLE-RW
+"]
+	14 -> 15 [label="sequential next"]
+	14 -> 15 [label=NotInvalidKey]
+	14 -> 15 [label=InvalidKey]
+	node [color=lightgrey shape=diamond style=filled]
+	"PEOPLE-RW" [label="PEOPLE-RW"]
+	"PEOPLE-RW" -> 14 [label=start]
+}

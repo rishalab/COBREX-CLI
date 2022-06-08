@@ -1,0 +1,50 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="SET I TO 1
+"]
+	2 [label="SEARCH ARR
+"]
+	3 [label="WHEN N = SEARCHRNO
+"]
+	5 [label="NEXT SENTENCE
+"]
+	4 [label="DISPLAY 'After Search'
+"]
+	15 [label="MOVE 10000 TO EMP-SALARY
+"]
+	16 [label="IF EMP-GRADE = 'C THEN'
+"]
+	17 [label="NEXT SENTENCE
+"]
+	18 [label="DISPLAY 'EMP-GRADE: ' EMP-GRADE
+"]
+	23 [label="STOP RUN
+"]
+	18 -> 23 [label="sequential next"]
+	17 -> 18 [label="next sentence"]
+	16 -> 17 [label=true]
+	19 [label="ADD 1000 TO EMP-SALARY END-ID
+"]
+	21 [label="DISPLAY 'NEW SALARY: ' EMP-SALARY
+"]
+	21 -> 18 [label="sequential next"]
+	19 -> 21 [label="sequential next"]
+	16 -> 19 [label=false]
+	15 -> 16 [label="sequential next"]
+	4 -> 15 [label="sequential next"]
+	5 -> 4 [label="next sentence"]
+	3 -> 5 [label=true]
+	6 [label="WHEN RNO ( I ) = SEARCHRNO
+"]
+	9 [label="DISPLAY \"FOUND ROLL NUMBER\"
+"]
+	9 -> 4 [label="sequential next"]
+	6 -> 9 [label=true]
+	13 [label="DISPLAY N
+"]
+	13 -> 4 [label="sequential next"]
+	6 -> 13 [label=false]
+	3 -> 6 [label=false]
+	2 -> 3 [label="search when"]
+	1 -> 2 [label="sequential next"]
+}

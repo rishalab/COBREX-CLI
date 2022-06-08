@@ -1,0 +1,82 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="MOVE 10000 TO EMP-SALARY
+"]
+	2 [label="IF EMP-GRADE = 'C THEN'
+"]
+	4 [label="ADD 1000 TO EMP-SALARY END-ID
+"]
+	5 [label="DISPLAY 'NEW SALARY: ' EMP-SALARY
+"]
+	4 -> 5 [label="sequential next"]
+	2 -> 4 [label=false]
+	1 -> 2 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"EMP-SALARY" [label="EMP-SALARY"]
+	"EMP-SALARY" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	8 [label="IF EMP-GRADE = 'C THEN'
+"]
+	10 [label="ADD 1000 TO EMP-SALARY END-ID
+"]
+	8 -> 10 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"END-ID" [label="END-ID"]
+	"END-ID" -> 8 [label=start]
+	node [color=lightblue shape=box style=filled]
+	13 [label="SEARCH ARR
+"]
+	14 [label="WHEN N = SEARCHRNO
+"]
+	16 [label="WHEN RNO ( I ) = SEARCHRNO
+"]
+	14 -> 16 [label=false]
+	13 -> 14 [label="search when"]
+	node [color=lightgrey shape=diamond style=filled]
+	"RNO(I)" [label="RNO(I)"]
+	"RNO(I)" -> 13 [label=start]
+	node [color=lightblue shape=box style=filled]
+	19 [label="SET I TO 1
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	I [label=I]
+	I -> 19 [label=start]
+	node [color=lightblue shape=box style=filled]
+	21 [label="SEARCH ARR
+"]
+	22 [label="WHEN N = SEARCHRNO
+"]
+	24 [label="WHEN RNO ( I ) = SEARCHRNO
+"]
+	26 [label="DISPLAY N
+"]
+	24 -> 26 [label=false]
+	22 -> 24 [label=false]
+	21 -> 22 [label="search when"]
+	node [color=lightgrey shape=diamond style=filled]
+	N [label=N]
+	N -> 21 [label=start]
+	node [color=lightblue shape=box style=filled]
+	28 [label="IF EMP-GRADE = 'C THEN'
+"]
+	29 [label="DISPLAY 'EMP-GRADE: ' EMP-GRADE
+"]
+	28 -> 29 [label=true]
+	28 -> 29 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"EMP-GRADE" [label="EMP-GRADE"]
+	"EMP-GRADE" -> 28 [label=start]
+	node [color=lightblue shape=box style=filled]
+	34 [label="SEARCH ARR
+"]
+	35 [label="WHEN N = SEARCHRNO
+"]
+	37 [label="WHEN RNO ( I ) = SEARCHRNO
+"]
+	35 -> 37 [label=false]
+	34 -> 35 [label="search when"]
+	node [color=lightgrey shape=diamond style=filled]
+	SEARCHRNO [label=SEARCHRNO]
+	SEARCHRNO -> 34 [label=start]
+}

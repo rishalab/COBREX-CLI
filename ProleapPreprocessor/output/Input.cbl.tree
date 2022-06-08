@@ -1,0 +1,1602 @@
+(startRule 
+	(compilationUnit 
+		(programUnit 
+			(identificationDivision IDENTIFICATION DIVISION .\n  
+				(programIdParagraph PROGRAM-ID .  
+					(programName 
+						(cobolWord SHOP)) .\n )) 
+			(environmentDivision ENVIRONMENT DIVISION .\n  
+				(environmentDivisionBody 
+					(configurationSection CONFIGURATION SECTION .\n  
+						(configurationSectionParagraph 
+							(sourceComputerParagraph SOURCE-COMPUTER .  
+								(computerName 
+									(systemName 
+										(cobolWord PC-MICROFOCUS))) .\n )) 
+						(configurationSectionParagraph 
+							(objectComputerParagraph OBJECT-COMPUTER .  
+								(computerName 
+									(systemName 
+										(cobolWord PC-MICROFOCUS))) .\n ))))) 
+			(dataDivision DATA DIVISION .\n  
+				(dataDivisionSection 
+					(workingStorageSection WORKING-STORAGE SECTION .\n  
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 01 
+								(dataName 
+									(cobolWord SHOP)) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord OP)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord QT-VEG)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord QT-MEAT)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord QT-BREAD)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord QT-MILK)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord QT-FRUIT)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord PR-VEG)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord PR-MEAT)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord PR-BREAD)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord PR-MILK)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n     )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 10 
+								(dataName 
+									(cobolWord PR-FRUIT)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 77 
+								(dataName 
+									(cobolWord MONEY)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) 
+								(dataValueClause VALUE 
+									(dataValueInterval 
+										(dataValueIntervalFrom 
+											(literal 
+												(numericLiteral 
+													(integerLiteral 50)))))) .\n )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 77 
+								(dataName 
+									(cobolWord REST)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 99)))) .\n )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 77 
+								(dataName 
+									(cobolWord BAG)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 77 
+								(dataName 
+									(cobolWord MAX-CAP)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) 
+								(dataValueClause VALUE 
+									(dataValueInterval 
+										(dataValueIntervalFrom 
+											(literal 
+												(numericLiteral 
+													(integerLiteral 10)))))) .\n )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 77 
+								(dataName 
+									(cobolWord RAND)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n )) 
+						(dataDescriptionEntry 
+							(dataDescriptionEntryFormat1 77 
+								(dataName 
+									(cobolWord NEED)) 
+								(dataPictureClause PICTURE 
+									(pictureString 
+										(pictureChars 
+											(integerLiteral 9)))) .\n ))))) 
+			(procedureDivision PROCEDURE DIVISION .\n  
+				(procedureDivisionBody 
+					(paragraphs 
+						(paragraph 
+							(paragraphName 
+								(cobolWord INIT)) .\n     
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord OP))))))))) 
+															(relationalOperator =) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 1)))))))))))) 
+										(ifThen 
+											(statement 
+												(displayStatement DISPLAY 
+													(displayOperand 
+														(literal "SHOP IS OPEN")))) 
+											(statement 
+												(performStatement PERFORM 
+													(performProcedureStatement 
+														(procedureName 
+															(paragraphName 
+																(cobolWord INIT-PRD))) THROUGH 
+														(procedureName 
+															(paragraphName 
+																(cobolWord INIT-PRD-FN)))))) 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord INIT-FN))))))) 
+										(ifElse ELSE 
+											(statement 
+												(displayStatement DISPLAY 
+													(displayOperand 
+														(literal "SHOP IS CLOSED")))) 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord INIT))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord INIT-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-VEG)) .\n  
+							(sentence 
+								(statement 
+									(performStatement PERFORM 
+										(performProcedureStatement 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED))) THROUGH 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED-FN)))))) .\n ) 
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord NEED))))))))) 
+															(relationalOperator =) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 1))))))))))) 
+											(andOrCondition AND 
+												(combinableCondition 
+													(simpleCondition 
+														(relationCondition 
+															(relationArithmeticComparison 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord QT-VEG))))))))) 
+																(relationalOperator >) 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(literal 
+																					(numericLiteral 
+																						(integerLiteral 0))))))))))))) 
+										(ifThen 
+											(statement 
+												(ifStatement IF 
+													(condition 
+														(combinableCondition 
+															(simpleCondition 
+																(relationCondition 
+																	(relationArithmeticComparison 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord MONEY))))))))) 
+																		(relationalOperator >) 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord PR-VEG))))))))))))) 
+														(andOrCondition AND 
+															(combinableCondition 
+																(simpleCondition 
+																	(relationCondition 
+																		(relationArithmeticComparison 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord BAG))))))))) 
+																			(relationalOperator <) 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord MAX-CAP))))))))))))))) 
+													(ifThen 
+														(statement 
+															(addStatement ADD 
+																(addToStatement 
+																	(addFrom 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) to 
+																	(addTo 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord BAG))))))))) 
+														(statement 
+															(computeStatement COMPUTE 
+																(computeStore 
+																	(identifier 
+																		(qualifiedDataName 
+																			(qualifiedDataNameFormat1 
+																				(dataName 
+																					(cobolWord MONEY)))))) = 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord MONEY)))))))) 
+																	(plusMinus - 
+																		(multDivs 
+																			(powers 
+																				(basis 
+																					(identifier 
+																						(qualifiedDataName 
+																							(qualifiedDataNameFormat1 
+																								(dataName 
+																									(cobolWord PR-VEG)))))))))))) 
+														(statement 
+															(subtractStatement SUBTRACT 
+																(subtractFromStatement 
+																	(subtractSubtrahend 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) FROM 
+																	(subtractMinuend 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord QT-VEG)))))))))) 
+													(ifElse ELSE 
+														(statement 
+															(goToStatement GO TO 
+																(goToStatementSimple 
+																	(procedureName 
+																		(paragraphName 
+																			(cobolWord PRINT)))))))))) 
+										(ifElse ELSE 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord BUY-MEAT))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-VEG-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-MEAT)) .\n  
+							(sentence 
+								(statement 
+									(performStatement PERFORM 
+										(performProcedureStatement 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED))) THROUGH 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED-FN)))))) .\n ) 
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord NEED))))))))) 
+															(relationalOperator =) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 1))))))))))) 
+											(andOrCondition AND 
+												(combinableCondition 
+													(simpleCondition 
+														(relationCondition 
+															(relationArithmeticComparison 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord QT-MEAT))))))))) 
+																(relationalOperator >) 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(literal 
+																					(numericLiteral 
+																						(integerLiteral 0))))))))))))) 
+										(ifThen 
+											(statement 
+												(ifStatement IF 
+													(condition 
+														(combinableCondition 
+															(simpleCondition 
+																(relationCondition 
+																	(relationArithmeticComparison 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord MONEY))))))))) 
+																		(relationalOperator >) 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord PR-MEAT))))))))))))) 
+														(andOrCondition AND 
+															(combinableCondition 
+																(simpleCondition 
+																	(relationCondition 
+																		(relationArithmeticComparison 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord BAG))))))))) 
+																			(relationalOperator <) 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord MAX-CAP))))))))))))))) 
+													(ifThen 
+														(statement 
+															(addStatement ADD 
+																(addToStatement 
+																	(addFrom 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) TO 
+																	(addTo 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord BAG))))))))) 
+														(statement 
+															(computeStatement COMPUTE 
+																(computeStore 
+																	(identifier 
+																		(qualifiedDataName 
+																			(qualifiedDataNameFormat1 
+																				(dataName 
+																					(cobolWord MONEY)))))) = 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord MONEY-PR-MEAT))))))))))) 
+														(statement 
+															(subtractStatement SUBTRACT 
+																(subtractFromStatement 
+																	(subtractSubtrahend 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) FROM 
+																	(subtractMinuend 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord QT-MEAT)))))))))) 
+													(ifElse ELSE 
+														(statement 
+															(goToStatement GO TO 
+																(goToStatementSimple 
+																	(procedureName 
+																		(paragraphName 
+																			(cobolWord PRINT)))))))))) 
+										(ifElse ELSE 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord BUY-BREAD))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-MEAT-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-BREAD)) .\n  
+							(sentence 
+								(statement 
+									(performStatement PERFORM 
+										(performProcedureStatement 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED))) THROUGH 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED-FN)))))) .\n ) 
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord NEED))))))))) 
+															(relationalOperator =) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 1))))))))))) 
+											(andOrCondition AND 
+												(combinableCondition 
+													(simpleCondition 
+														(relationCondition 
+															(relationArithmeticComparison 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord QT-BREAD))))))))) 
+																(relationalOperator >) 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(literal 
+																					(numericLiteral 
+																						(integerLiteral 0))))))))))))) 
+										(ifThen 
+											(statement 
+												(ifStatement IF 
+													(condition 
+														(combinableCondition 
+															(simpleCondition 
+																(relationCondition 
+																	(relationArithmeticComparison 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord MONEY))))))))) 
+																		(relationalOperator >) 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord PR-BREAD))))))))))))) 
+														(andOrCondition AND 
+															(combinableCondition 
+																(simpleCondition 
+																	(relationCondition 
+																		(relationArithmeticComparison 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord BAG))))))))) 
+																			(relationalOperator <) 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord MAX-CAP))))))))))))))) 
+													(ifThen 
+														(statement 
+															(addStatement ADD 
+																(addToStatement 
+																	(addFrom 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) TO 
+																	(addTo 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord BAG))))))))) 
+														(statement 
+															(computeStatement COMPUTE 
+																(computeStore 
+																	(identifier 
+																		(qualifiedDataName 
+																			(qualifiedDataNameFormat1 
+																				(dataName 
+																					(cobolWord MONEY)))))) = 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord MONEY)))))))) 
+																	(plusMinus - 
+																		(multDivs 
+																			(powers 
+																				(basis 
+																					(identifier 
+																						(qualifiedDataName 
+																							(qualifiedDataNameFormat1 
+																								(dataName 
+																									(cobolWord PR-BREAD)))))))))))) 
+														(statement 
+															(subtractStatement SUBTRACT 
+																(subtractFromStatement 
+																	(subtractSubtrahend 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) FROM 
+																	(subtractMinuend 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord QT-BREAD)))))))))) 
+													(ifElse ELSE 
+														(statement 
+															(goToStatement GO TO 
+																(goToStatementSimple 
+																	(procedureName 
+																		(paragraphName 
+																			(cobolWord PRINT)))))))))) 
+										(ifElse ELSE 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord BUY-MILK))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-BREAD-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-MILK)) .\n  
+							(sentence 
+								(statement 
+									(performStatement PERFORM 
+										(performProcedureStatement 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED))) THRU 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED-FN)))))) .\n ) 
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord NEED))))))))) 
+															(relationalOperator =) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 1))))))))))) 
+											(andOrCondition AND 
+												(combinableCondition 
+													(simpleCondition 
+														(relationCondition 
+															(relationArithmeticComparison 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord QT-MILK))))))))) 
+																(relationalOperator >) 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(literal 
+																					(numericLiteral 
+																						(integerLiteral 0))))))))))))) 
+										(ifThen 
+											(statement 
+												(ifStatement IF 
+													(condition 
+														(combinableCondition 
+															(simpleCondition 
+																(relationCondition 
+																	(relationArithmeticComparison 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord MONEY))))))))) 
+																		(relationalOperator >) 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord PR-MILK))))))))))))) 
+														(andOrCondition AND 
+															(combinableCondition 
+																(simpleCondition 
+																	(relationCondition 
+																		(relationArithmeticComparison 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord BAG))))))))) 
+																			(relationalOperator <) 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord MAX-CAP))))))))))))))) 
+													(ifThen 
+														(statement 
+															(addStatement ADD 
+																(addToStatement 
+																	(addFrom 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) TO 
+																	(addTo 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord BAG))))))))) 
+														(statement 
+															(computeStatement COMPUTE 
+																(computeStore 
+																	(identifier 
+																		(qualifiedDataName 
+																			(qualifiedDataNameFormat1 
+																				(dataName 
+																					(cobolWord MONEY)))))) = 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord MONEY)))))))) 
+																	(plusMinus - 
+																		(multDivs 
+																			(powers 
+																				(basis 
+																					(identifier 
+																						(qualifiedDataName 
+																							(qualifiedDataNameFormat1 
+																								(dataName 
+																									(cobolWord PR-MILK)))))))))))) 
+														(statement 
+															(subtractStatement SUBTRACT 
+																(subtractFromStatement 
+																	(subtractSubtrahend 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) FROM 
+																	(subtractMinuend 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord QT-MILK)))))))))) 
+													(ifElse ELSE 
+														(statement 
+															(goToStatement GO TO 
+																(goToStatementSimple 
+																	(procedureName 
+																		(paragraphName 
+																			(cobolWord PRINT)))))))))) 
+										(ifElse ELSE 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord BUY-FRUIT))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-MILK-FN)) .\n  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-FRUIT)) .\n  
+							(sentence 
+								(statement 
+									(performStatement PERFORM 
+										(performProcedureStatement 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED))) THRU 
+											(procedureName 
+												(paragraphName 
+													(cobolWord ISNEEDED-FN)))))) .\n ) 
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord NEED))))))))) 
+															(relationalOperator =) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 1))))))))))) 
+											(andOrCondition AND 
+												(combinableCondition 
+													(simpleCondition 
+														(relationCondition 
+															(relationArithmeticComparison 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord QT-FRUIT))))))))) 
+																(relationalOperator >) 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(literal 
+																					(numericLiteral 
+																						(integerLiteral 0))))))))))))) 
+										(ifThen 
+											(statement 
+												(ifStatement IF 
+													(condition 
+														(combinableCondition 
+															(simpleCondition 
+																(relationCondition 
+																	(relationArithmeticComparison 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord MONEY))))))))) 
+																		(relationalOperator >) 
+																		(arithmeticExpression 
+																			(multDivs 
+																				(powers 
+																					(basis 
+																						(identifier 
+																							(qualifiedDataName 
+																								(qualifiedDataNameFormat1 
+																									(dataName 
+																										(cobolWord PR-FRUIT))))))))))))) 
+														(andOrCondition AND 
+															(combinableCondition 
+																(simpleCondition 
+																	(relationCondition 
+																		(relationArithmeticComparison 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord BAG))))))))) 
+																			(relationalOperator <) 
+																			(arithmeticExpression 
+																				(multDivs 
+																					(powers 
+																						(basis 
+																							(identifier 
+																								(qualifiedDataName 
+																									(qualifiedDataNameFormat1 
+																										(dataName 
+																											(cobolWord MAX-CAP))))))))))))))) 
+													(ifThen 
+														(statement 
+															(addStatement ADD 
+																(addToStatement 
+																	(addFrom 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) TO 
+																	(addTo 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord BAG))))))))) 
+														(statement 
+															(computeStatement COMPUTE 
+																(computeStore 
+																	(identifier 
+																		(qualifiedDataName 
+																			(qualifiedDataNameFormat1 
+																				(dataName 
+																					(cobolWord MONEY)))))) = 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord MONEY)))))))) 
+																	(plusMinus - 
+																		(multDivs 
+																			(powers 
+																				(basis 
+																					(identifier 
+																						(qualifiedDataName 
+																							(qualifiedDataNameFormat1 
+																								(dataName 
+																									(cobolWord PR-FRUIT)))))))))))) 
+														(statement 
+															(subtractStatement SUBTRACT 
+																(subtractFromStatement 
+																	(subtractSubtrahend 
+																		(literal 
+																			(numericLiteral 
+																				(integerLiteral 1)))) FROM 
+																	(subtractMinuend 
+																		(identifier 
+																			(qualifiedDataName 
+																				(qualifiedDataNameFormat1 
+																					(dataName 
+																						(cobolWord QT-FRUIT)))))))))) 
+													(ifElse ELSE 
+														(statement 
+															(goToStatement GO TO 
+																(goToStatementSimple 
+																	(procedureName 
+																		(paragraphName 
+																			(cobolWord PRINT)))))))))) 
+										(ifElse ELSE 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord CHECK))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord BUY-FRUIT-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord CHECK)) .\n  
+							(sentence 
+								(statement 
+									(ifStatement IF 
+										(condition 
+											(combinableCondition 
+												(simpleCondition 
+													(relationCondition 
+														(relationArithmeticComparison 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(identifier 
+																				(qualifiedDataName 
+																					(qualifiedDataNameFormat1 
+																						(dataName 
+																							(cobolWord MONEY))))))))) 
+															(relationalOperator <=) 
+															(arithmeticExpression 
+																(multDivs 
+																	(powers 
+																		(basis 
+																			(literal 
+																				(numericLiteral 
+																					(integerLiteral 0))))))))))) 
+											(andOrCondition OR 
+												(combinableCondition 
+													(simpleCondition 
+														(relationCondition 
+															(relationArithmeticComparison 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord BAG))))))))) 
+																(relationalOperator >=) 
+																(arithmeticExpression 
+																	(multDivs 
+																		(powers 
+																			(basis 
+																				(identifier 
+																					(qualifiedDataName 
+																						(qualifiedDataNameFormat1 
+																							(dataName 
+																								(cobolWord MAX-CAP))))))))))))))) 
+										(ifThen 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord PRINT))))))) 
+										(ifElse ELSE 
+											(statement 
+												(goToStatement GO TO 
+													(goToStatementSimple 
+														(procedureName 
+															(paragraphName 
+																(cobolWord BUY-VEG))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord CHECK-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord PRINT)) .\n  
+							(sentence 
+								(statement 
+									(moveStatement MOVE 
+										(moveToStatement 
+											(moveToSendingArea 
+												(identifier 
+													(qualifiedDataName 
+														(qualifiedDataNameFormat1 
+															(dataName 
+																(cobolWord MONEY)))))) TO 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord REST)))))))) .\n ) 
+							(sentence 
+								(statement 
+									(displayStatement DISPLAY 
+										(displayOperand 
+											(literal "REST:")) 
+										(displayOperand 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord MONEY)))))))) .\n ) 
+							(sentence 
+								(statement 
+									(displayStatement DISPLAY 
+										(displayOperand 
+											(literal "NB OF PRODUCTS:")) 
+										(displayOperand 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord BAG)))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord FIN)) .\n     
+							(sentence 
+								(statement 
+									(stopStatement STOP RUN)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord ISNEEDED)) .\n    
+							(sentence 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord NEED)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 2)))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord ISNEEDED-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord INIT-PRD)) .\n     
+							(sentence 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord QT-VEG)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord QT-MEAT)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord QT-BREAD)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord QT-MILK)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord QT-FRUIT)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord PR-VEG)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10))))))) 
+											(plusMinus + 
+												(multDivs 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 3)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord PR-MEAT)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10))))))) 
+											(plusMinus + 
+												(multDivs 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 5)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord PR-BREAD)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10))))))) 
+											(plusMinus + 
+												(multDivs 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 1)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord PR-MILK)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10))))))) 
+											(plusMinus + 
+												(multDivs 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 2)))))))))) 
+								(statement 
+									(computeStatement COMPUTE 
+										(computeStore 
+											(identifier 
+												(qualifiedDataName 
+													(qualifiedDataNameFormat1 
+														(dataName 
+															(cobolWord PR-FRUIT)))))) = 
+										(arithmeticExpression 
+											(multDivs 
+												(powers 
+													(basis 
+														(identifier 
+															(functionCall FUNCTION 
+																(functionName RANDOM) ( 
+																(argument 
+																	(literal 
+																		(numericLiteral 
+																			(integerLiteral 1)))) ))))) 
+												(multDiv * 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 10))))))) 
+											(plusMinus + 
+												(multDivs 
+													(powers 
+														(basis 
+															(literal 
+																(numericLiteral 
+																	(integerLiteral 1)))))))))) .\n )) 
+						(paragraph 
+							(paragraphName 
+								(cobolWord INIT-PRD-FN)) .  
+							(sentence 
+								(statement 
+									(exitStatement EXIT)) .))))))) <EOF>)

@@ -1,0 +1,36 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="ACCEPT NUM
+"]
+	2 [label="DIVIDE NUM BY 2 GIVING QUOTIENT REMAINDER REMAIN
+"]
+	3 [label="IF REMAIN = 0
+"]
+	4 [label="DISPLAY NUM ' IS EVEN'
+"]
+	3 -> 4 [label=true]
+	6 [label="DISPLAY NUM ' IS ODD'
+"]
+	3 -> 6 [label=false]
+	2 -> 3 [label="sequential next"]
+	1 -> 2 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	NUM [label=NUM]
+	NUM -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	8 [label="DIVIDE NUM BY 2 GIVING QUOTIENT REMAINDER REMAIN
+"]
+	9 [label="IF REMAIN = 0
+"]
+	8 -> 9 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	REMAIN [label=REMAIN]
+	REMAIN -> 8 [label=start]
+	node [color=lightblue shape=box style=filled]
+	12 [label="DIVIDE NUM BY 2 GIVING QUOTIENT REMAINDER REMAIN
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	QUOTIENT [label=QUOTIENT]
+	QUOTIENT -> 12 [label=start]
+}

@@ -1,0 +1,57 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="EVALUATE TRUE ALSO AGE
+"]
+	2 [label="WHEN A = 5 ALSO 1
+"]
+	4 [label="WHEN A = 10 ALSO 10
+"]
+	5 [label="ADD 15 TO C
+"]
+	4 -> 5 [label=true]
+	2 -> 4 [label=false]
+	1 -> 2 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	C [label=C]
+	C -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	8 [label="EVALUATE TRUE ALSO AGE
+"]
+	9 [label="WHEN A = 5 ALSO 1
+"]
+	10 [label="MOVE 10 TO B
+"]
+	9 -> 10 [label=true]
+	8 -> 9 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	B [label=B]
+	B -> 8 [label=start]
+	node [color=lightblue shape=box style=filled]
+	13 [label="ACCEPT AGE
+"]
+	14 [label="EVALUATE TRUE ALSO AGE
+"]
+	13 -> 14 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	AGE [label=AGE]
+	AGE -> 13 [label=start]
+	node [color=lightblue shape=box style=filled]
+	16 [label="ACCEPT A
+"]
+	17 [label="EVALUATE TRUE ALSO AGE
+"]
+	18 [label="WHEN A = 5 ALSO 1
+"]
+	20 [label="WHEN A = 10 ALSO 10
+"]
+	22 [label="WHEN A = 15 ALSO 25
+"]
+	20 -> 22 [label=false]
+	18 -> 20 [label=false]
+	17 -> 18 [label="evaluate when"]
+	16 -> 17 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	A [label=A]
+	A -> 16 [label=start]
+}
