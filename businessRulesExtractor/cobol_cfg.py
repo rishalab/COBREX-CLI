@@ -214,7 +214,7 @@ class CFGBuilder(Cobol85Visitor):
         first and last statement of the corresponding procedure(paragraph/section)
         respectively
         """
-        for procedure in self.procedures.items():
+        for _, procedure in self.procedures.items():
             for block in procedure.link_first_statement:
 
                 self.add_exit(block, procedure.statement_blocks[0], "procedure call")

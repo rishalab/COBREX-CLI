@@ -1,0 +1,216 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="display-title-screen .
+ 
+"]
+	2 [label="display spaces
+"]
+	3 [label="display \"**** % FUEL SAVINGS CALCULATOR UTILITY BEGINS ****\"
+"]
+	4 [label="display \"Written by, Clifford A. Chipman, EMIT\"
+"]
+	5 [label="display \"June 17, 2020\"
+"]
+	6 [label="display spaces
+"]
+	7 [label="display \"in Enterprise COBOL v6.3 for z/OS\"
+"]
+	8 [label="display spaces
+"]
+	9 [label="display \"Enter zero for any parameter to end the program.\"
+"]
+	10 [label="display spaces
+"]
+	11 [label="old-eff-data-entry .
+ 
+"]
+	12 [label="display \"Enter old efficiency %: \" with no advancing
+"]
+	13 [label="accept old-eff-in
+"]
+	14 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+"]
+	15 [label="display \"Old Efficiency\" not-numeric
+"]
+	18 [label="display spaces
+"]
+	19 [label="go to old-eff-data-entry
+"]
+	19 -> 11 [label="procedure call"]
+	18 -> 19 [label="sequential next"]
+	15 -> 18 [label="sequential next"]
+	14 -> 15 [label=true]
+	17 [label="compute oldeff = function numval ( old-eff-in )
+"]
+	16 [label="if oldeff = 0
+"]
+	22 [label="go to end-program
+"]
+	82 [label="end-program .
+ 
+"]
+	83 [label="display spaces
+"]
+	84 [label="display \"***** % FUEL SAVINGS CALCULATOR UTILITY ENDS *****\"
+"]
+	85 [label="display spaces
+"]
+	86 [label="stop run
+"]
+	85 -> 86 [label="sequential next"]
+	84 -> 85 [label="sequential next"]
+	83 -> 84 [label="sequential next"]
+	82 -> 83 [label="sequential next"]
+	22 -> 82 [label="procedure call"]
+	16 -> 22 [label=true]
+	23 [label="if oldeff < min-val
+"]
+	26 [label="display quantity-too-small
+"]
+	29 [label="display spaces
+"]
+	30 [label="go to old-eff-data-entry
+"]
+	30 -> 11 [label="procedure call"]
+	29 -> 30 [label="sequential next"]
+	26 -> 29 [label="sequential next"]
+	23 -> 26 [label=true]
+	27 [label="if oldeff > max-val
+"]
+	32 [label="display quantity-too-much
+"]
+	35 [label="display spaces
+"]
+	36 [label="go to old-eff-data-entry
+"]
+	36 -> 11 [label="procedure call"]
+	35 -> 36 [label="sequential next"]
+	32 -> 35 [label="sequential next"]
+	27 -> 32 [label=true]
+	33 [label="new-eff-data-entry .
+ 
+"]
+	38 [label="display \"Enter new efficiency %: \" with no advancing
+"]
+	39 [label="accept new-eff-in
+"]
+	40 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+"]
+	41 [label="display \"New Efficiency\" not-numeric
+"]
+	44 [label="display spaces
+"]
+	45 [label="go to new-eff-data-entry
+"]
+	45 -> 33 [label="procedure call"]
+	44 -> 45 [label="sequential next"]
+	41 -> 44 [label="sequential next"]
+	40 -> 41 [label=true]
+	43 [label="compute neweff = function numval ( new-eff-in )
+"]
+	42 [label="if neweff = 0
+"]
+	48 [label="go to end-program
+"]
+	48 -> 82 [label="procedure call"]
+	42 -> 48 [label=true]
+	49 [label="if neweff < min-val
+"]
+	52 [label="display quantity-too-small
+"]
+	55 [label="go to new-eff-data-entry
+"]
+	55 -> 33 [label="procedure call"]
+	52 -> 55 [label="sequential next"]
+	49 -> 52 [label=true]
+	53 [label="if neweff > max-val
+"]
+	57 [label="display quantity-too-much
+"]
+	60 [label="go to new-eff-data-entry
+"]
+	60 -> 33 [label="procedure call"]
+	57 -> 60 [label="sequential next"]
+	53 -> 57 [label=true]
+	58 [label="if neweff = oldeff
+"]
+	62 [label="display quantities-equal1 quantities-equal2
+"]
+	65 [label="go to end-program
+"]
+	65 -> 82 [label="procedure call"]
+	62 -> 65 [label="sequential next"]
+	58 -> 62 [label=true]
+	63 [label="if neweff < oldeff
+"]
+	67 [label="display quantity-lower1 quantity-lower2
+"]
+	70 [label="go to end-program
+"]
+	70 -> 82 [label="procedure call"]
+	67 -> 70 [label="sequential next"]
+	63 -> 67 [label=true]
+	68 [label="calculate-it .
+ 
+"]
+	72 [label="subtract oldeff from neweff giving numerator
+"]
+	73 [label="divide numerator by neweff giving pcteff rounded
+"]
+	74 [label="multiply 100 by pcteff
+"]
+	75 [label="move oldeff to old-eff-out
+"]
+	76 [label="move neweff to new-eff-out
+"]
+	77 [label="move pcteff to pct-eff-out
+"]
+	78 [label="disp-result .
+ 
+"]
+	79 [label="display \"Old Efficiency: \" old-eff-out \"%\"
+"]
+	80 [label="display \"New Efficiency: \" new-eff-out \"%\"
+"]
+	81 [label="display \"Fuel Savings: \" pct-eff-out \"%\"
+"]
+	81 -> 82 [label="sequential next"]
+	80 -> 81 [label="sequential next"]
+	79 -> 80 [label="sequential next"]
+	78 -> 79 [label="sequential next"]
+	77 -> 78 [label="sequential next"]
+	76 -> 77 [label="sequential next"]
+	75 -> 76 [label="sequential next"]
+	74 -> 75 [label="sequential next"]
+	73 -> 74 [label="sequential next"]
+	72 -> 73 [label="sequential next"]
+	68 -> 72 [label="sequential next"]
+	63 -> 68 [label=false]
+	58 -> 63 [label=false]
+	53 -> 58 [label=false]
+	49 -> 53 [label=false]
+	42 -> 49 [label=false]
+	43 -> 42 [label="sequential next"]
+	40 -> 43 [label=false]
+	39 -> 40 [label="sequential next"]
+	38 -> 39 [label="sequential next"]
+	33 -> 38 [label="sequential next"]
+	27 -> 33 [label=false]
+	23 -> 27 [label=false]
+	16 -> 23 [label=false]
+	17 -> 16 [label="sequential next"]
+	14 -> 17 [label=false]
+	13 -> 14 [label="sequential next"]
+	12 -> 13 [label="sequential next"]
+	11 -> 12 [label="sequential next"]
+	10 -> 11 [label="sequential next"]
+	9 -> 10 [label="sequential next"]
+	8 -> 9 [label="sequential next"]
+	7 -> 8 [label="sequential next"]
+	6 -> 7 [label="sequential next"]
+	5 -> 6 [label="sequential next"]
+	4 -> 5 [label="sequential next"]
+	3 -> 4 [label="sequential next"]
+	2 -> 3 [label="sequential next"]
+	1 -> 2 [label="sequential next"]
+}
