@@ -37,6 +37,9 @@ In this phase, we extract the business rules of the input business variables usi
 All statements and their corresponding context statements of a business variable are added to a Rules set.
 Depth First Search (DFS) is performed on the CFG to identify and add the control flow between the statements present in the Rules set.
 
+## CFG generated and business rules extracted for [FUELSAVE.cbl](https://github.com/cchipman21804/EnterpriseCOBOLv6.3/blob/master/cbl/FUELSAVE.cbl)
+
+
 ## What's inside the COBREX-CLI repository?
 Inside the businessRulesExtractor directory,
 
