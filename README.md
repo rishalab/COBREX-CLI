@@ -38,7 +38,10 @@ All statements and their corresponding context statements of a business variable
 Depth First Search (DFS) is performed on the CFG to identify and add the control flow between the statements present in the Rules set.
 
 ## CFG generated and business rules extracted for [FUELSAVE.cbl](https://github.com/cchipman21804/EnterpriseCOBOLv6.3/blob/master/cbl/FUELSAVE.cbl)
-
+### 1. A portion of generated Control Flow Graph (CFG)
+![CFG](partFUELSAVECFG.png)
+### 2. Business rules for the variables new-eff-in, pcteff, old-eff-in, neweff and oldeff present in FUELSAVE.cbl
+![Business Rules](FUELSAVE_BRs.png)
 
 ## What's inside the COBREX-CLI repository?
 Inside the businessRulesExtractor directory,
