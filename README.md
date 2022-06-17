@@ -23,7 +23,7 @@ These extracted business rules can also aid COBOL developers in bug location and
 
 ## Working of COBREX:
 COBREX has been developed using Python using the following approach:
-
+![Approach diagram](COBREX-approach)
 
 ## Setup Guidelines
 1. Clone or download this github repository.
