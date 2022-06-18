@@ -25,7 +25,7 @@ These extracted business rules can also aid COBOL developers in bug location and
 COBREX has been developed using Python using the following approach:
 ![Approach diagram](COBREX-approach.png)
 
-COBREX can be divided into three main phases as illustrated in the above. 
+COBREX can be divided into three main phases as illustrated in the above figure. 
 ### 1. Abstract Syntax Tree (AST) Generation
 In the first phase, ANTLR4 is used to create a COBOL parser using the COBOL85 grammar. The input COBOL program is preprocessed using the GnuCOBOL pre-processor. Then, the pre-processed file is processed by the parser to produce the AST. 
 
