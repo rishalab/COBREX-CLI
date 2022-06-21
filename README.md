@@ -75,13 +75,18 @@ In the root directory,
 cd COBREX-CLI
 ```
 
-3. Install the requirements:
+3. Create and activate a new python3 virtual environment:
+```bash
+python(3) -m venv <path_to_env/env_name></path_to_env>
+```
+
+4. Install the requirements:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Install [GnuCOBOL](https://gnucobol.sourceforge.io)
-5. Install [Graphviz](https://graphviz.org/download/)
+5. Install [GnuCOBOL](https://gnucobol.sourceforge.io)
+6. Install [Graphviz](https://graphviz.org/download/)
 
 
 ## Steps to use COBREX:
