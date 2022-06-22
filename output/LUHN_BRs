@@ -1,0 +1,122 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="MOVE CC-NUM ( 16 : 1 ) TO CHECK-DIGIT
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"CHECK-DIGIT" [label="CHECK-DIGIT"]
+	"CHECK-DIGIT" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	3 [label="MOVE FUNCTION REVERSE ( CC-NUM ) TO TEST-NUM
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"TEST-NUM" [label="TEST-NUM"]
+	"TEST-NUM" -> 3 [label=start]
+	node [color=lightblue shape=box style=filled]
+	5 [label="DISPLAY \"CC-NUM: \" CC-NUM WITH NO ADVANCING
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"CC-NUM" [label="CC-NUM"]
+	"CC-NUM" -> 5 [label=start]
+	node [color=lightblue shape=box style=filled]
+	8 [label="MOVE 1 TO EVEN-IDX
+"]
+	9 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	10 [label="ADD 1 TO EVEN-IDX
+"]
+	9 -> 10 [label=true]
+	13 [label="PERFORM VARYING EVEN-IDX FROM 1 BY 1 UNTIL EVEN-IDX IS GREATER THAN 8
+"]
+	13 -> 13 [label=iteration]
+	9 -> 13 [label="perform-exit"]
+	8 -> 9 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"EVEN-IDX" [label="EVEN-IDX"]
+	"EVEN-IDX" -> 8 [label=start]
+	node [color=lightblue shape=box style=filled]
+	18 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"FUNCTIONMOD(DIGIT-COUNTER2)" [label="FUNCTIONMOD(DIGIT-COUNTER2)"]
+	"FUNCTIONMOD(DIGIT-COUNTER2)" -> 18 [label=start]
+	node [color=lightblue shape=box style=filled]
+	23 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	25 [label="ADD ODD-DIGIT ( ODD-IDX ) TO CHECKSUM
+"]
+	23 -> 25 [label=false]
+	27 [label="ADD DBL-DIGIT ( EVEN-IDX ) TO CHECKSUM
+"]
+	27 -> 27 [label=false]
+	23 -> 27 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	CHECKSUM [label=CHECKSUM]
+	CHECKSUM -> 23 [label=start]
+	node [color=lightblue shape=box style=filled]
+	33 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	34 [label="MOVE TEST-NUM ( DIGIT-COUNTER : 1 ) TO EVEN-DIGIT ( EVEN-IDX )
+"]
+	33 -> 34 [label=true]
+	37 [label="MULTIPLY EVEN-DIGIT ( EVEN-IDX ) BY 2 GIVING DBL-DIGIT ( EVEN-IDX )
+"]
+	33 -> 37 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"EVEN-DIGIT(EVEN-IDX)" [label="EVEN-DIGIT(EVEN-IDX)"]
+	"EVEN-DIGIT(EVEN-IDX)" -> 33 [label=start]
+	node [color=lightblue shape=box style=filled]
+	41 [label="PERFORM VARYING DIGIT-COUNTER FROM 1 BY 1 UNTIL DIGIT-COUNTER IS GREATER THAN 16
+"]
+	41 -> 41 [label=iteration]
+	41 -> 41 [label=iteration]
+	node [color=lightgrey shape=diamond style=filled]
+	"DIGIT-COUNTER" [label="DIGIT-COUNTER"]
+	"DIGIT-COUNTER" -> 41 [label=start]
+	node [color=lightblue shape=box style=filled]
+	47 [label="MULTIPLY EVEN-DIGIT ( EVEN-IDX ) BY 2 GIVING DBL-DIGIT ( EVEN-IDX )
+"]
+	48 [label="IF DBL-DIGIT ( EVEN-IDX ) IS GREATER THAN 9
+"]
+	49 [label="SUBTRACT 9 FROM DBL-DIGIT ( EVEN-IDX )
+"]
+	50 [label="ADD DBL-DIGIT ( EVEN-IDX ) TO CHECKSUM
+"]
+	49 -> 50 [label="sequential next"]
+	48 -> 49 [label=true]
+	48 -> 50 [label=false]
+	47 -> 48 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"DBL-DIGIT(EVEN-IDX)" [label="DBL-DIGIT(EVEN-IDX)"]
+	"DBL-DIGIT(EVEN-IDX)" -> 47 [label=start]
+	node [color=lightblue shape=box style=filled]
+	56 [label="COMPUTE PASS-FAIL = FUNCTION MOD ( CHECKSUM 10 )
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PASS-FAIL" [label="PASS-FAIL"]
+	"PASS-FAIL" -> 56 [label=start]
+	node [color=lightblue shape=box style=filled]
+	59 [label="MOVE 1 TO ODD-IDX
+"]
+	60 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	62 [label="ADD 1 TO ODD-IDX
+"]
+	60 -> 62 [label=false]
+	59 -> 60 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"ODD-IDX" [label="ODD-IDX"]
+	"ODD-IDX" -> 59 [label=start]
+	node [color=lightblue shape=box style=filled]
+	66 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	68 [label="MOVE TEST-NUM ( DIGIT-COUNTER : 1 ) TO ODD-DIGIT ( ODD-IDX )
+"]
+	69 [label="ADD ODD-DIGIT ( ODD-IDX ) TO CHECKSUM
+"]
+	68 -> 69 [label="sequential next"]
+	66 -> 68 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"ODD-DIGIT(ODD-IDX)" [label="ODD-DIGIT(ODD-IDX)"]
+	"ODD-DIGIT(ODD-IDX)" -> 66 [label=start]
+}

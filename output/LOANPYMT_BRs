@@ -1,0 +1,318 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="divide annual-interest by 12 giving MONTHLY-INTEREST
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"MONTHLY-INTEREST" [label="MONTHLY-INTEREST"]
+	"MONTHLY-INTEREST" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	3 [label="move annual-worth to aw-out
+"]
+	4 [label="display \"Monthly Payment: \" aw-out
+"]
+	3 -> 4 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"aw-out" [label="aw-out"]
+	"aw-out" -> 3 [label=start]
+	node [color=lightblue shape=box style=filled]
+	6 [label="move loan-term-months to months-out
+"]
+	7 [label="display \"Term: \" term-out \" years (\" months-out \" months )\"
+"]
+	6 -> 7 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"months-out" [label="months-out"]
+	"months-out" -> 6 [label=start]
+	node [color=lightblue shape=box style=filled]
+	9 [label="accept term-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"term-in" [label="term-in"]
+	"term-in" -> 9 [label=start]
+	node [color=lightblue shape=box style=filled]
+	11 [label="if annual-term > max-term
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"max-term" [label="max-term"]
+	"max-term" -> 11 [label=start]
+	node [color=lightblue shape=box style=filled]
+	14 [label="if present-value > max-val
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"max-val" [label="max-val"]
+	"max-val" -> 14 [label=start]
+	node [color=lightblue shape=box style=filled]
+	17 [label="if present-value > max-val
+"]
+	18 [label="display quantity-too-much
+"]
+	17 -> 18 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-too-much" [label="quantity-too-much"]
+	"quantity-too-much" -> 17 [label=start]
+	node [color=lightblue shape=box style=filled]
+	21 [label="move total-cost to total-cost-out
+"]
+	22 [label="display \"Total Cost of Loan Payments: \" total-cost-out
+"]
+	21 -> 22 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"total-cost-out" [label="total-cost-out"]
+	"total-cost-out" -> 21 [label=start]
+	node [color=lightblue shape=box style=filled]
+	24 [label="if function test-numval ( pv-in ) IS NOT EQUAL ZERO
+"]
+	25 [label="display \"Principal\" not-numeric
+"]
+	24 -> 25 [label=true]
+	27 [label="if function test-numval ( int-in ) IS NOT EQUAL ZERO
+"]
+	28 [label="display \"Interest Rate\" not-numeric
+"]
+	27 -> 28 [label=true]
+	30 [label="if function test-numval ( term-in ) IS NOT EQUAL ZERO
+"]
+	31 [label="display \"Term\" not-numeric
+"]
+	30 -> 31 [label=true]
+	27 -> 30 [label=false]
+	24 -> 27 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"not-numeric" [label="not-numeric"]
+	"not-numeric" -> 24 [label=start]
+	node [color=lightblue shape=box style=filled]
+	34 [label="if function test-numval ( term-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(term-in)" [label="functiontest-numval(term-in)"]
+	"functiontest-numval(term-in)" -> 34 [label=start]
+	node [color=lightblue shape=box style=filled]
+	37 [label="accept int-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"int-in" [label="int-in"]
+	"int-in" -> 37 [label=start]
+	node [color=lightblue shape=box style=filled]
+	39 [label="move present-value to pv-out
+"]
+	40 [label="display \"Principal: \" pv-out
+"]
+	39 -> 40 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pv-out" [label="pv-out"]
+	"pv-out" -> 39 [label=start]
+	node [color=lightblue shape=box style=filled]
+	42 [label="accept pv-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pv-in" [label="pv-in"]
+	"pv-in" -> 42 [label=start]
+	node [color=lightblue shape=box style=filled]
+	44 [label="if function test-numval ( pv-in ) IS NOT EQUAL ZERO
+"]
+	46 [label="compute present-value = function numval ( pv-in )
+"]
+	47 [label="if present-value IS EQUAL ZERO
+"]
+	49 [label="if present-value > max-val
+"]
+	51 [label="if present-value < min-val
+"]
+	53 [label="move present-value to pv-out
+"]
+	54 [label="compute ANNUAL-WORTH = present-value * ( numerator / denominator )
+"]
+	53 -> 54 [label="sequential next"]
+	51 -> 53 [label=false]
+	49 -> 51 [label=false]
+	47 -> 49 [label=false]
+	46 -> 47 [label="sequential next"]
+	44 -> 46 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"present-value" [label="present-value"]
+	"present-value" -> 44 [label=start]
+	node [color=lightblue shape=box style=filled]
+	56 [label="if annual-interest IS LESS THAN ZERO
+"]
+	57 [label="display interest-too-small
+"]
+	56 -> 57 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"interest-too-small" [label="interest-too-small"]
+	"interest-too-small" -> 56 [label=start]
+	node [color=lightblue shape=box style=filled]
+	60 [label="if annual-term < min-term
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"min-term" [label="min-term"]
+	"min-term" -> 60 [label=start]
+	node [color=lightblue shape=box style=filled]
+	63 [label="move annual-term to term-out
+"]
+	64 [label="display \"Term: \" term-out \" years (\" months-out \" months )\"
+"]
+	63 -> 64 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"term-out" [label="term-out"]
+	"term-out" -> 63 [label=start]
+	node [color=lightblue shape=box style=filled]
+	66 [label="if annual-term > max-term
+"]
+	67 [label="display term-too-long
+"]
+	66 -> 67 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"term-too-long" [label="term-too-long"]
+	"term-too-long" -> 66 [label=start]
+	node [color=lightblue shape=box style=filled]
+	70 [label="compute denominator = ( 1 + monthly-interest ) ** loan-term-months - 1
+"]
+	71 [label="compute ANNUAL-WORTH = present-value * ( numerator / denominator )
+"]
+	70 -> 71 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	denominator [label=denominator]
+	denominator -> 70 [label=start]
+	node [color=lightblue shape=box style=filled]
+	73 [label="if present-value < min-val
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"min-val" [label="min-val"]
+	"min-val" -> 73 [label=start]
+	node [color=lightblue shape=box style=filled]
+	76 [label="if function test-numval ( int-in ) IS NOT EQUAL ZERO
+"]
+	78 [label="compute annual-interest = function numval ( int-in )
+"]
+	79 [label="if annual-interest > max-int
+"]
+	81 [label="if annual-interest IS LESS THAN ZERO
+"]
+	83 [label="if annual-interest IS EQUAL ZERO
+"]
+	85 [label="move annual-interest to interest-rate
+"]
+	86 [label="divide annual-interest by 100 giving annual-interest
+"]
+	87 [label="divide annual-interest by 12 giving MONTHLY-INTEREST
+"]
+	86 -> 87 [label="sequential next"]
+	85 -> 86 [label="sequential next"]
+	83 -> 85 [label=false]
+	81 -> 83 [label=false]
+	79 -> 81 [label=false]
+	78 -> 79 [label="sequential next"]
+	76 -> 78 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"annual-interest" [label="annual-interest"]
+	"annual-interest" -> 76 [label=start]
+	node [color=lightblue shape=box style=filled]
+	89 [label="if function test-numval ( int-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(int-in)" [label="functiontest-numval(int-in)"]
+	"functiontest-numval(int-in)" -> 89 [label=start]
+	node [color=lightblue shape=box style=filled]
+	92 [label="multiply annual-term by 12 giving LOAN-TERM-MONTHS
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"LOAN-TERM-MONTHS" [label="LOAN-TERM-MONTHS"]
+	"LOAN-TERM-MONTHS" -> 92 [label=start]
+	node [color=lightblue shape=box style=filled]
+	94 [label="move annual-interest to interest-rate
+"]
+	95 [label="display \"Interest Rate: \" interest-rate \"%\"
+"]
+	94 -> 95 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"interest-rate" [label="interest-rate"]
+	"interest-rate" -> 94 [label=start]
+	node [color=lightblue shape=box style=filled]
+	97 [label="if annual-interest > max-int
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"max-int" [label="max-int"]
+	"max-int" -> 97 [label=start]
+	node [color=lightblue shape=box style=filled]
+	100 [label="if annual-interest > max-int
+"]
+	101 [label="display interest-too-much
+"]
+	100 -> 101 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"interest-too-much" [label="interest-too-much"]
+	"interest-too-much" -> 100 [label=start]
+	node [color=lightblue shape=box style=filled]
+	104 [label="compute numerator = monthly-interest * ( 1 + monthly-interest ) ** loan-term-months
+"]
+	105 [label="compute ANNUAL-WORTH = present-value * ( numerator / denominator )
+"]
+	104 -> 105 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	numerator [label=numerator]
+	numerator -> 104 [label=start]
+	node [color=lightblue shape=box style=filled]
+	107 [label="if present-value < min-val
+"]
+	108 [label="display quantity-too-small
+"]
+	107 -> 108 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-too-small" [label="quantity-too-small"]
+	"quantity-too-small" -> 107 [label=start]
+	node [color=lightblue shape=box style=filled]
+	111 [label="if function test-numval ( pv-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(pv-in)" [label="functiontest-numval(pv-in)"]
+	"functiontest-numval(pv-in)" -> 111 [label=start]
+	node [color=lightblue shape=box style=filled]
+	114 [label="multiply annual-worth by loan-term-months giving total-cost
+"]
+	115 [label="move total-cost to total-cost-out
+"]
+	114 -> 115 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"total-cost" [label="total-cost"]
+	"total-cost" -> 114 [label=start]
+	node [color=lightblue shape=box style=filled]
+	117 [label="if annual-term < min-term
+"]
+	118 [label="display term-too-short
+"]
+	117 -> 118 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"term-too-short" [label="term-too-short"]
+	"term-too-short" -> 117 [label=start]
+	node [color=lightblue shape=box style=filled]
+	121 [label="if function test-numval ( term-in ) IS NOT EQUAL ZERO
+"]
+	123 [label="compute annual-term = function numval ( term-in )
+"]
+	124 [label="if annual-term IS EQUAL ZERO
+"]
+	126 [label="if annual-term > max-term
+"]
+	128 [label="if annual-term < min-term
+"]
+	130 [label="move annual-term to term-out
+"]
+	131 [label="multiply annual-term by 12 giving LOAN-TERM-MONTHS
+"]
+	130 -> 131 [label="sequential next"]
+	128 -> 130 [label=false]
+	126 -> 128 [label=false]
+	124 -> 126 [label=false]
+	123 -> 124 [label="sequential next"]
+	121 -> 123 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"annual-term" [label="annual-term"]
+	"annual-term" -> 121 [label=start]
+	node [color=lightblue shape=box style=filled]
+	133 [label="compute ANNUAL-WORTH = present-value * ( numerator / denominator )
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"ANNUAL-WORTH" [label="ANNUAL-WORTH"]
+	"ANNUAL-WORTH" -> 133 [label=start]
+}

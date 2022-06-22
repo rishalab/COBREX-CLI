@@ -1,0 +1,88 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="EVALUATE TRUE
+"]
+	2 [label="WHEN ( FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO AND FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO )
+"]
+	4 [label="WHEN FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO
+"]
+	2 -> 4 [label=false]
+	1 -> 2 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	"FUNCTIONMOD(COUNTER3)" [label="FUNCTIONMOD(COUNTER3)"]
+	"FUNCTIONMOD(COUNTER3)" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	8 [label="EVALUATE TRUE
+"]
+	9 [label="WHEN ( FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO AND FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO )
+"]
+	11 [label="WHEN FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO
+"]
+	13 [label="WHEN FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO
+"]
+	11 -> 13 [label=false]
+	9 -> 11 [label=false]
+	8 -> 9 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	"FUNCTIONMOD(COUNTER5)" [label="FUNCTIONMOD(COUNTER5)"]
+	"FUNCTIONMOD(COUNTER5)" -> 8 [label=start]
+	node [color=lightblue shape=box style=filled]
+	17 [label="MOVE ALL SPACES TO NONSENSE
+"]
+	18 [label="EVALUATE TRUE
+"]
+	19 [label="WHEN ( FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO AND FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO )
+"]
+	20 [label="MOVE \"FizzBuzz\" TO NONSENSE
+"]
+	21 [label="DISPLAY NONSENSE
+"]
+	20 -> 21 [label="sequential next"]
+	19 -> 20 [label=true]
+	23 [label="WHEN FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO
+"]
+	24 [label="MOVE \"Fizz\" TO NONSENSE
+"]
+	24 -> 21 [label="sequential next"]
+	23 -> 24 [label=true]
+	27 [label="WHEN FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO
+"]
+	28 [label="MOVE \"Buzz\" TO NONSENSE
+"]
+	28 -> 21 [label="sequential next"]
+	27 -> 28 [label=true]
+	31 [label="MOVE COUNTER TO NONSENSE
+"]
+	31 -> 21 [label="sequential next"]
+	27 -> 31 [label=false]
+	23 -> 27 [label=false]
+	19 -> 23 [label=false]
+	18 -> 19 [label="evaluate when"]
+	17 -> 18 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	NONSENSE [label=NONSENSE]
+	NONSENSE -> 17 [label=start]
+	node [color=lightblue shape=box style=filled]
+	35 [label="PERFORM VARYING COUNTER FROM 1 BY 1 UNTIL COUNTER IS EQUAL TO 101
+"]
+	36 [label="EVALUATE TRUE
+"]
+	37 [label="WHEN ( FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO AND FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO )
+"]
+	37 -> 35 [label=true]
+	40 [label="WHEN FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO
+"]
+	42 [label="WHEN FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO
+"]
+	44 [label="MOVE COUNTER TO NONSENSE
+"]
+	42 -> 44 [label=false]
+	40 -> 42 [label=false]
+	37 -> 40 [label=false]
+	36 -> 37 [label="evaluate when"]
+	35 -> 36 [label=iteration]
+	node [color=lightgrey shape=diamond style=filled]
+	COUNTER [label=COUNTER]
+	COUNTER -> 35 [label=start]
+}

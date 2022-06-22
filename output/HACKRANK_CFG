@@ -1,0 +1,237 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="100-primary .
+ 
+"]
+	2 [label="perform 105-open-files
+"]
+	4 [label="perform 110-obtain-current-date
+"]
+	10 [label="perform 115-write-report-headers varying counter from 2 by 1 until counter is equal to 6
+"]
+	23 [label="perform 120-extract-from-csv until EOF
+"]
+	29 [label="perform 190-close-files
+"]
+	96 [label="9999-end-program .
+ 
+"]
+	101 [label="stop run
+"]
+	96 -> 101 [label="sequential next"]
+	29 -> 96 [label="perform-exit"]
+	97 [label="190-close-files .
+ 
+"]
+	98 [label="close hack-in-file
+"]
+	99 [label="close hack-filtered-file
+"]
+	99 -> 29 [label="sequential next"]
+	98 -> 99 [label="sequential next"]
+	97 -> 98 [label="sequential next"]
+	29 -> 97 [label="procedure call"]
+	23 -> 29 [label="perform-exit"]
+	30 [label="120-extract-from-csv .
+ 
+"]
+	31 [label="read hack-in-file
+"]
+	32 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	35 [label="unstring hack-in-create-dt delimited by space into create-date-stamp create-time-stamp
+"]
+	36 [label="unstring create-time-stamp delimited by \":\" into created-hour actual-minute
+"]
+	37 [label="evaluate function test-numval-f ( created-hour )
+"]
+	38 [label="when zero
+"]
+	40 [label="if function numval-f ( created-hour ) < 10
+"]
+	43 [label="string \"0\" delimited by x'00' created-hour delimited by x'00' into actual-hour
+"]
+	39 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	48 [label="compute points = function numval-f ( hack-in-points )
+"]
+	51 [label="compute comments = function numval-f ( hack-in-comments )
+"]
+	52 [label="compute hour = function numval-f ( actual-hour )
+"]
+	53 [label="compute minute = function numval-f ( actual-minute )
+"]
+	54 [label="perform 121-search-for-strings
+"]
+	57 [label="121-search-for-strings .
+ 
+"]
+	58 [label="move zero to counter
+"]
+	59 [label="move function lower-case ( hack-in-title ) to inspected-title
+"]
+	60 [label="inspect inspected-title tallying counter for all search-string-1
+"]
+	61 [label="if counter is greater than zero
+"]
+	62 [label="perform 122-create-output-record
+"]
+	67 [label="122-create-output-record .
+ 
+"]
+	68 [label="move hack-in-id to hack-out-id
+"]
+	69 [label="move hack-in-title to hack-out-title
+"]
+	70 [label="move hack-in-author to hack-out-author
+"]
+	71 [label="move actual-time-stamp to hack-out-time
+"]
+	72 [label="perform 130-calculate-score
+"]
+	74 [label="perform 140-write-record
+"]
+	89 [label="perform 122-create-output-record
+"]
+	89 -> 67 [label="procedure call"]
+	89 -> 54 [label="perform-exit"]
+	74 -> 89 [label=backward]
+	83 [label="140-write-record .
+ 
+"]
+	84 [label="move hack-out-record to hack-filtered
+"]
+	85 [label="write hack-filtered after advancing 1 line
+"]
+	85 -> 74 [label="sequential next"]
+	84 -> 85 [label="sequential next"]
+	83 -> 84 [label="sequential next"]
+	74 -> 83 [label="procedure call"]
+	74 -> 62 [label="perform-exit"]
+	72 -> 74 [label="perform-exit"]
+	75 [label="130-calculate-score .
+ 
+"]
+	76 [label="compute age rounded = ( hh - hour ) + ( minute / 60 )
+"]
+	77 [label="add points to comments giving votes
+"]
+	78 [label="compute score = ( votes - 1 ) ** 0.8 / ( age + 2 ) ** 1.8
+"]
+	79 [label="move score to hack-out-score
+"]
+	79 -> 72 [label="sequential next"]
+	78 -> 79 [label="sequential next"]
+	77 -> 78 [label="sequential next"]
+	76 -> 77 [label="sequential next"]
+	75 -> 76 [label="sequential next"]
+	72 -> 75 [label="procedure call"]
+	71 -> 72 [label="sequential next"]
+	70 -> 71 [label="sequential next"]
+	69 -> 70 [label="sequential next"]
+	68 -> 69 [label="sequential next"]
+	67 -> 68 [label="sequential next"]
+	62 -> 67 [label="procedure call"]
+	63 [label="move zero to counter
+"]
+	87 [label="inspect inspected-title tallying counter for all search-string-2
+"]
+	88 [label="if counter is greater than zero
+"]
+	88 -> 89 [label=true]
+	88 -> 54 [label=false]
+	87 -> 88 [label="sequential next"]
+	63 -> 87 [label="sequential next"]
+	62 -> 63 [label="perform-exit"]
+	61 -> 62 [label=true]
+	61 -> 63 [label=false]
+	60 -> 61 [label="sequential next"]
+	59 -> 60 [label="sequential next"]
+	58 -> 59 [label="sequential next"]
+	57 -> 58 [label="sequential next"]
+	54 -> 57 [label="procedure call"]
+	54 -> 23 [label="perform-exit"]
+	53 -> 54 [label="sequential next"]
+	52 -> 53 [label="sequential next"]
+	51 -> 52 [label="sequential next"]
+	48 -> 51 [label="sequential next"]
+	39 -> 48 [label=true]
+	39 -> 23 [label=false]
+	43 -> 39 [label="sequential next"]
+	40 -> 43 [label=true]
+	45 [label="move created-hour to actual-hour
+"]
+	45 -> 39 [label="sequential next"]
+	40 -> 45 [label=false]
+	38 -> 40 [label=true]
+	38 -> 39 [label=false]
+	37 -> 38 [label="evaluate when"]
+	36 -> 37 [label="sequential next"]
+	35 -> 36 [label="sequential next"]
+	32 -> 35 [label="sequential next"]
+	31 -> 32 [label="sequential next"]
+	33 [label="move \"Y\" to end-of-file-flag
+"]
+	33 -> 32 [label="sequential next"]
+	31 -> 33 [label=AtEnd]
+	30 -> 31 [label="sequential next"]
+	23 -> 30 [label="procedure call"]
+	10 -> 23 [label="perform-exit"]
+	24 [label="115-write-report-headers .
+ 
+"]
+	25 [label="move rpt-hdr-ln ( counter ) to hack-filtered
+"]
+	26 [label="write hack-filtered after advancing 1 line
+"]
+	26 -> 10 [label="sequential next"]
+	25 -> 26 [label="sequential next"]
+	24 -> 25 [label="sequential next"]
+	10 -> 24 [label="procedure call"]
+	4 -> 10 [label="perform-exit"]
+	11 [label="110-obtain-current-date .
+ 
+"]
+	12 [label="move function current-date to datetime
+"]
+	13 [label="move mo to todays-month
+"]
+	14 [label="move da to todays-day
+"]
+	15 [label="move year to todays-year
+"]
+	16 [label="move todays-date to tdys-date-out
+"]
+	17 [label="move report-time to rpt-time-out
+"]
+	18 [label="move first-report-line to rpt-hdr-ln ( 1 )
+"]
+	19 [label="move rpt-hdr-ln ( 1 ) to hack-filtered
+"]
+	20 [label="write hack-filtered
+"]
+	20 -> 4 [label="sequential next"]
+	19 -> 20 [label="sequential next"]
+	18 -> 19 [label="sequential next"]
+	17 -> 18 [label="sequential next"]
+	16 -> 17 [label="sequential next"]
+	15 -> 16 [label="sequential next"]
+	14 -> 15 [label="sequential next"]
+	13 -> 14 [label="sequential next"]
+	12 -> 13 [label="sequential next"]
+	11 -> 12 [label="sequential next"]
+	4 -> 11 [label="procedure call"]
+	2 -> 4 [label="perform-exit"]
+	5 [label="105-open-files .
+ 
+"]
+	6 [label="open input hack-in-file
+"]
+	7 [label="open output hack-filtered-file
+"]
+	7 -> 2 [label="sequential next"]
+	6 -> 7 [label="sequential next"]
+	5 -> 6 [label="sequential next"]
+	2 -> 5 [label="procedure call"]
+	1 -> 2 [label="sequential next"]
+}

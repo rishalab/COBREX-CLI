@@ -1,1 +1,501 @@
-{"business_rules": {"functiontest-numval(new-eff-in)": {"nodes": [{"id": "functiontest-numval(new-eff-in)", "data": {"label": "functiontest-numval(new-eff-in)"}}, {"id": "40", "data": {"label": "if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO\n"}}], "edges": [{"id": "1", "source": "functiontest-numval(new-eff-in)", "target": "40", "label": "start"}]}, "quantities-equal1": {"nodes": [{"id": "quantities-equal1", "data": {"label": "quantities-equal1"}}, {"id": "58", "data": {"label": "if neweff = oldeff\n"}}, {"id": "62", "data": {"label": "display quantities-equal1 quantities-equal2\n"}}], "edges": [{"id": "2", "source": "quantities-equal1", "target": "58", "label": "start"}, {"id": "3", "source": "58", "target": "62", "label": "true"}]}, "max-val": {"nodes": [{"id": "max-val", "data": {"label": "max-val"}}, {"id": "27", "data": {"label": "if oldeff > max-val\n"}}, {"id": "53", "data": {"label": "if neweff > max-val\n"}}], "edges": [{"id": "4", "source": "max-val", "target": "27", "label": "start"}, {"id": "5", "source": "27", "target": "53", "label": "false"}]}, "numerator": {"nodes": [{"id": "numerator", "data": {"label": "numerator"}}, {"id": "72", "data": {"label": "subtract oldeff from neweff giving numerator\n"}}, {"id": "73", "data": {"label": "divide numerator by neweff giving pcteff rounded\n"}}], "edges": [{"id": "6", "source": "numerator", "target": "72", "label": "start"}, {"id": "7", "source": "72", "target": "73", "label": "sequential next"}]}, "new-eff-out": {"nodes": [{"id": "new-eff-out", "data": {"label": "new-eff-out"}}, {"id": "76", "data": {"label": "move neweff to new-eff-out\n"}}, {"id": "80", "data": {"label": "display \"New Efficiency: \" new-eff-out \"%\"\n"}}], "edges": [{"id": "8", "source": "new-eff-out", "target": "76", "label": "start"}, {"id": "9", "source": "76", "target": "80", "label": "sequential next"}]}, "quantity-too-small": {"nodes": [{"id": "quantity-too-small", "data": {"label": "quantity-too-small"}}, {"id": "23", "data": {"label": "if oldeff < min-val\n"}}, {"id": "26", "data": {"label": "display quantity-too-small\n"}}, {"id": "49", "data": {"label": "if neweff < min-val\n"}}, {"id": "52", "data": {"label": "display quantity-too-small\n"}}], "edges": [{"id": "10", "source": "quantity-too-small", "target": "23", "label": "start"}, {"id": "11", "source": "23", "target": "26", "label": "true"}, {"id": "12", "source": "23", "target": "49", "label": "false"}, {"id": "13", "source": "49", "target": "52", "label": "true"}]}, "old-eff-in": {"nodes": [{"id": "old-eff-in", "data": {"label": "old-eff-in"}}, {"id": "13", "data": {"label": "accept old-eff-in\n"}}], "edges": [{"id": "14", "source": "old-eff-in", "target": "13", "label": "start"}]}, "new-eff-in": {"nodes": [{"id": "new-eff-in", "data": {"label": "new-eff-in"}}, {"id": "39", "data": {"label": "accept new-eff-in\n"}}], "edges": [{"id": "15", "source": "new-eff-in", "target": "39", "label": "start"}]}, "quantity-lower1": {"nodes": [{"id": "quantity-lower1", "data": {"label": "quantity-lower1"}}, {"id": "63", "data": {"label": "if neweff < oldeff\n"}}, {"id": "67", "data": {"label": "display quantity-lower1 quantity-lower2\n"}}], "edges": [{"id": "16", "source": "quantity-lower1", "target": "63", "label": "start"}, {"id": "17", "source": "63", "target": "67", "label": "true"}]}, "quantity-too-much": {"nodes": [{"id": "quantity-too-much", "data": {"label": "quantity-too-much"}}, {"id": "27", "data": {"label": "if oldeff > max-val\n"}}, {"id": "32", "data": {"label": "display quantity-too-much\n"}}, {"id": "53", "data": {"label": "if neweff > max-val\n"}}, {"id": "57", "data": {"label": "display quantity-too-much\n"}}], "edges": [{"id": "18", "source": "quantity-too-much", "target": "27", "label": "start"}, {"id": "19", "source": "27", "target": "32", "label": "true"}, {"id": "20", "source": "27", "target": "53", "label": "false"}, {"id": "21", "source": "53", "target": "57", "label": "true"}]}, "quantity-lower2": {"nodes": [{"id": "quantity-lower2", "data": {"label": "quantity-lower2"}}, {"id": "63", "data": {"label": "if neweff < oldeff\n"}}, {"id": "67", "data": {"label": "display quantity-lower1 quantity-lower2\n"}}], "edges": [{"id": "22", "source": "quantity-lower2", "target": "63", "label": "start"}, {"id": "23", "source": "63", "target": "67", "label": "true"}]}, "not-numeric": {"nodes": [{"id": "not-numeric", "data": {"label": "not-numeric"}}, {"id": "14", "data": {"label": "if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO\n"}}, {"id": "15", "data": {"label": "display \"Old Efficiency\" not-numeric\n"}}, {"id": "40", "data": {"label": "if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO\n"}}, {"id": "41", "data": {"label": "display \"New Efficiency\" not-numeric\n"}}], "edges": [{"id": "24", "source": "not-numeric", "target": "14", "label": "start"}, {"id": "25", "source": "14", "target": "15", "label": "true"}, {"id": "26", "source": "14", "target": "40", "label": "false"}, {"id": "27", "source": "40", "target": "41", "label": "true"}]}, "pcteff": {"nodes": [{"id": "pcteff", "data": {"label": "pcteff"}}, {"id": "73", "data": {"label": "divide numerator by neweff giving pcteff rounded\n"}}, {"id": "74", "data": {"label": "multiply 100 by pcteff\n"}}, {"id": "77", "data": {"label": "move pcteff to pct-eff-out\n"}}], "edges": [{"id": "28", "source": "pcteff", "target": "73", "label": "start"}, {"id": "29", "source": "73", "target": "74", "label": "sequential next"}, {"id": "30", "source": "74", "target": "77", "label": "sequential next"}]}, "quantities-equal2": {"nodes": [{"id": "quantities-equal2", "data": {"label": "quantities-equal2"}}, {"id": "58", "data": {"label": "if neweff = oldeff\n"}}, {"id": "62", "data": {"label": "display quantities-equal1 quantities-equal2\n"}}], "edges": [{"id": "31", "source": "quantities-equal2", "target": "58", "label": "start"}, {"id": "32", "source": "58", "target": "62", "label": "true"}]}, "functiontest-numval(old-eff-in)": {"nodes": [{"id": "functiontest-numval(old-eff-in)", "data": {"label": "functiontest-numval(old-eff-in)"}}, {"id": "14", "data": {"label": "if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO\n"}}], "edges": [{"id": "33", "source": "functiontest-numval(old-eff-in)", "target": "14", "label": "start"}]}, "neweff": {"nodes": [{"id": "neweff", "data": {"label": "neweff"}}, {"id": "40", "data": {"label": "if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO\n"}}, {"id": "43", "data": {"label": "compute neweff = function numval ( new-eff-in )\n"}}, {"id": "42", "data": {"label": "if neweff = 0\n"}}, {"id": "49", "data": {"label": "if neweff < min-val\n"}}, {"id": "53", "data": {"label": "if neweff > max-val\n"}}, {"id": "58", "data": {"label": "if neweff = oldeff\n"}}, {"id": "63", "data": {"label": "if neweff < oldeff\n"}}, {"id": "72", "data": {"label": "subtract oldeff from neweff giving numerator\n"}}, {"id": "73", "data": {"label": "divide numerator by neweff giving pcteff rounded\n"}}, {"id": "76", "data": {"label": "move neweff to new-eff-out\n"}}], "edges": [{"id": "34", "source": "neweff", "target": "40", "label": "start"}, {"id": "35", "source": "40", "target": "43", "label": "false"}, {"id": "36", "source": "43", "target": "42", "label": "sequential next"}, {"id": "37", "source": "42", "target": "49", "label": "false"}, {"id": "38", "source": "49", "target": "53", "label": "false"}, {"id": "39", "source": "53", "target": "58", "label": "false"}, {"id": "40", "source": "58", "target": "63", "label": "false"}, {"id": "41", "source": "63", "target": "72", "label": "false"}, {"id": "42", "source": "72", "target": "73", "label": "sequential next"}, {"id": "43", "source": "73", "target": "76", "label": "sequential next"}]}, "min-val": {"nodes": [{"id": "min-val", "data": {"label": "min-val"}}, {"id": "23", "data": {"label": "if oldeff < min-val\n"}}, {"id": "49", "data": {"label": "if neweff < min-val\n"}}], "edges": [{"id": "44", "source": "min-val", "target": "23", "label": "start"}, {"id": "45", "source": "23", "target": "49", "label": "false"}]}, "pct-eff-out": {"nodes": [{"id": "pct-eff-out", "data": {"label": "pct-eff-out"}}, {"id": "77", "data": {"label": "move pcteff to pct-eff-out\n"}}, {"id": "81", "data": {"label": "display \"Fuel Savings: \" pct-eff-out \"%\"\n"}}], "edges": [{"id": "46", "source": "pct-eff-out", "target": "77", "label": "start"}, {"id": "47", "source": "77", "target": "81", "label": "sequential next"}]}, "old-eff-out": {"nodes": [{"id": "old-eff-out", "data": {"label": "old-eff-out"}}, {"id": "75", "data": {"label": "move oldeff to old-eff-out\n"}}, {"id": "79", "data": {"label": "display \"Old Efficiency: \" old-eff-out \"%\"\n"}}], "edges": [{"id": "48", "source": "old-eff-out", "target": "75", "label": "start"}, {"id": "49", "source": "75", "target": "79", "label": "sequential next"}]}, "oldeff": {"nodes": [{"id": "oldeff", "data": {"label": "oldeff"}}, {"id": "14", "data": {"label": "if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO\n"}}, {"id": "17", "data": {"label": "compute oldeff = function numval ( old-eff-in )\n"}}, {"id": "16", "data": {"label": "if oldeff = 0\n"}}, {"id": "23", "data": {"label": "if oldeff < min-val\n"}}, {"id": "27", "data": {"label": "if oldeff > max-val\n"}}, {"id": "58", "data": {"label": "if neweff = oldeff\n"}}, {"id": "63", "data": {"label": "if neweff < oldeff\n"}}, {"id": "72", "data": {"label": "subtract oldeff from neweff giving numerator\n"}}, {"id": "75", "data": {"label": "move oldeff to old-eff-out\n"}}], "edges": [{"id": "50", "source": "oldeff", "target": "14", "label": "start"}, {"id": "51", "source": "14", "target": "17", "label": "false"}, {"id": "52", "source": "17", "target": "16", "label": "sequential next"}, {"id": "53", "source": "16", "target": "23", "label": "false"}, {"id": "54", "source": "23", "target": "27", "label": "false"}, {"id": "55", "source": "27", "target": "58", "label": "false"}, {"id": "56", "source": "58", "target": "63", "label": "false"}, {"id": "57", "source": "63", "target": "72", "label": "false"}, {"id": "58", "source": "72", "target": "75", "label": "sequential next"}]}}, "business_variables": ["functiontest-numval(new-eff-in)", "quantities-equal1", "max-val", "numerator", "new-eff-out", "quantity-too-small", "old-eff-in", "new-eff-in", "quantity-lower1", "quantity-too-much", "quantity-lower2", "not-numeric", "pcteff", "quantities-equal2", "functiontest-numval(old-eff-in)", "neweff", "min-val", "pct-eff-out", "old-eff-out", "oldeff"]}
+{
+  "business_rules": {
+    "old-eff-out": {
+      "nodes": [
+        { "id": "old-eff-out", "data": { "label": "old-eff-out" } },
+        { "id": "75", "data": { "label": "move oldeff to old-eff-out\n" } },
+        {
+          "id": "79",
+          "data": {
+            "label": "display \"Old Efficiency: \" old-eff-out \"%\"\n"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "1",
+          "source": "old-eff-out",
+          "target": "75",
+          "label": "start"
+        },
+        {
+          "id": "2",
+          "source": "75",
+          "target": "79",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "oldeff": {
+      "nodes": [
+        { "id": "oldeff", "data": { "label": "oldeff" } },
+        {
+          "id": "14",
+          "data": {
+            "label": "if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO\n"
+          }
+        },
+        {
+          "id": "17",
+          "data": {
+            "label": "compute oldeff = function numval ( old-eff-in )\n"
+          }
+        },
+        { "id": "16", "data": { "label": "if oldeff = 0\n" } },
+        { "id": "23", "data": { "label": "if oldeff < min-val\n" } },
+        { "id": "27", "data": { "label": "if oldeff > max-val\n" } },
+        { "id": "58", "data": { "label": "if neweff = oldeff\n" } },
+        { "id": "63", "data": { "label": "if neweff < oldeff\n" } },
+        {
+          "id": "72",
+          "data": { "label": "subtract oldeff from neweff giving numerator\n" }
+        },
+        { "id": "75", "data": { "label": "move oldeff to old-eff-out\n" } }
+      ],
+      "edges": [
+        { "id": "3", "source": "oldeff", "target": "14", "label": "start" },
+        { "id": "4", "source": "14", "target": "17", "label": "false" },
+        {
+          "id": "5",
+          "source": "17",
+          "target": "16",
+          "label": "sequential next"
+        },
+        { "id": "6", "source": "16", "target": "23", "label": "false" },
+        { "id": "7", "source": "23", "target": "27", "label": "false" },
+        { "id": "8", "source": "27", "target": "58", "label": "false" },
+        { "id": "9", "source": "58", "target": "63", "label": "false" },
+        { "id": "10", "source": "63", "target": "72", "label": "false" },
+        {
+          "id": "11",
+          "source": "72",
+          "target": "75",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "min-val": {
+      "nodes": [
+        { "id": "min-val", "data": { "label": "min-val" } },
+        { "id": "23", "data": { "label": "if oldeff < min-val\n" } },
+        { "id": "49", "data": { "label": "if neweff < min-val\n" } }
+      ],
+      "edges": [
+        { "id": "12", "source": "min-val", "target": "23", "label": "start" },
+        { "id": "13", "source": "23", "target": "49", "label": "false" }
+      ]
+    },
+    "numerator": {
+      "nodes": [
+        { "id": "numerator", "data": { "label": "numerator" } },
+        {
+          "id": "72",
+          "data": { "label": "subtract oldeff from neweff giving numerator\n" }
+        },
+        {
+          "id": "73",
+          "data": {
+            "label": "divide numerator by neweff giving pcteff rounded\n"
+          }
+        }
+      ],
+      "edges": [
+        { "id": "14", "source": "numerator", "target": "72", "label": "start" },
+        {
+          "id": "15",
+          "source": "72",
+          "target": "73",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "new-eff-in": {
+      "nodes": [
+        { "id": "new-eff-in", "data": { "label": "new-eff-in" } },
+        { "id": "39", "data": { "label": "accept new-eff-in\n" } }
+      ],
+      "edges": [
+        { "id": "16", "source": "new-eff-in", "target": "39", "label": "start" }
+      ]
+    },
+    "quantity-too-much": {
+      "nodes": [
+        { "id": "quantity-too-much", "data": { "label": "quantity-too-much" } },
+        { "id": "27", "data": { "label": "if oldeff > max-val\n" } },
+        { "id": "32", "data": { "label": "display quantity-too-much\n" } },
+        { "id": "53", "data": { "label": "if neweff > max-val\n" } },
+        { "id": "57", "data": { "label": "display quantity-too-much\n" } }
+      ],
+      "edges": [
+        {
+          "id": "17",
+          "source": "quantity-too-much",
+          "target": "27",
+          "label": "start"
+        },
+        { "id": "18", "source": "27", "target": "32", "label": "true" },
+        { "id": "19", "source": "27", "target": "53", "label": "false" },
+        { "id": "20", "source": "53", "target": "57", "label": "true" }
+      ]
+    },
+    "quantity-lower2": {
+      "nodes": [
+        { "id": "quantity-lower2", "data": { "label": "quantity-lower2" } },
+        { "id": "63", "data": { "label": "if neweff < oldeff\n" } },
+        {
+          "id": "67",
+          "data": { "label": "display quantity-lower1 quantity-lower2\n" }
+        }
+      ],
+      "edges": [
+        {
+          "id": "21",
+          "source": "quantity-lower2",
+          "target": "63",
+          "label": "start"
+        },
+        { "id": "22", "source": "63", "target": "67", "label": "true" }
+      ]
+    },
+    "quantity-lower1": {
+      "nodes": [
+        { "id": "quantity-lower1", "data": { "label": "quantity-lower1" } },
+        { "id": "63", "data": { "label": "if neweff < oldeff\n" } },
+        {
+          "id": "67",
+          "data": { "label": "display quantity-lower1 quantity-lower2\n" }
+        }
+      ],
+      "edges": [
+        {
+          "id": "23",
+          "source": "quantity-lower1",
+          "target": "63",
+          "label": "start"
+        },
+        { "id": "24", "source": "63", "target": "67", "label": "true" }
+      ]
+    },
+    "functiontest-numval(new-eff-in)": {
+      "nodes": [
+        {
+          "id": "functiontest-numval(new-eff-in)",
+          "data": { "label": "functiontest-numval(new-eff-in)" }
+        },
+        {
+          "id": "40",
+          "data": {
+            "label": "if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO\n"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "25",
+          "source": "functiontest-numval(new-eff-in)",
+          "target": "40",
+          "label": "start"
+        }
+      ]
+    },
+    "quantity-too-small": {
+      "nodes": [
+        {
+          "id": "quantity-too-small",
+          "data": { "label": "quantity-too-small" }
+        },
+        { "id": "23", "data": { "label": "if oldeff < min-val\n" } },
+        { "id": "26", "data": { "label": "display quantity-too-small\n" } },
+        { "id": "49", "data": { "label": "if neweff < min-val\n" } },
+        { "id": "52", "data": { "label": "display quantity-too-small\n" } }
+      ],
+      "edges": [
+        {
+          "id": "26",
+          "source": "quantity-too-small",
+          "target": "23",
+          "label": "start"
+        },
+        { "id": "27", "source": "23", "target": "26", "label": "true" },
+        { "id": "28", "source": "23", "target": "49", "label": "false" },
+        { "id": "29", "source": "49", "target": "52", "label": "true" }
+      ]
+    },
+    "max-val": {
+      "nodes": [
+        { "id": "max-val", "data": { "label": "max-val" } },
+        { "id": "27", "data": { "label": "if oldeff > max-val\n" } },
+        { "id": "53", "data": { "label": "if neweff > max-val\n" } }
+      ],
+      "edges": [
+        { "id": "30", "source": "max-val", "target": "27", "label": "start" },
+        { "id": "31", "source": "27", "target": "53", "label": "false" }
+      ]
+    },
+    "pct-eff-out": {
+      "nodes": [
+        { "id": "pct-eff-out", "data": { "label": "pct-eff-out" } },
+        { "id": "77", "data": { "label": "move pcteff to pct-eff-out\n" } },
+        {
+          "id": "81",
+          "data": { "label": "display \"Fuel Savings: \" pct-eff-out \"%\"\n" }
+        }
+      ],
+      "edges": [
+        {
+          "id": "32",
+          "source": "pct-eff-out",
+          "target": "77",
+          "label": "start"
+        },
+        {
+          "id": "33",
+          "source": "77",
+          "target": "81",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "pcteff": {
+      "nodes": [
+        { "id": "pcteff", "data": { "label": "pcteff" } },
+        {
+          "id": "73",
+          "data": {
+            "label": "divide numerator by neweff giving pcteff rounded\n"
+          }
+        },
+        { "id": "74", "data": { "label": "multiply 100 by pcteff\n" } },
+        { "id": "77", "data": { "label": "move pcteff to pct-eff-out\n" } }
+      ],
+      "edges": [
+        { "id": "34", "source": "pcteff", "target": "73", "label": "start" },
+        {
+          "id": "35",
+          "source": "73",
+          "target": "74",
+          "label": "sequential next"
+        },
+        {
+          "id": "36",
+          "source": "74",
+          "target": "77",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "quantities-equal1": {
+      "nodes": [
+        { "id": "quantities-equal1", "data": { "label": "quantities-equal1" } },
+        { "id": "58", "data": { "label": "if neweff = oldeff\n" } },
+        {
+          "id": "62",
+          "data": { "label": "display quantities-equal1 quantities-equal2\n" }
+        }
+      ],
+      "edges": [
+        {
+          "id": "37",
+          "source": "quantities-equal1",
+          "target": "58",
+          "label": "start"
+        },
+        { "id": "38", "source": "58", "target": "62", "label": "true" }
+      ]
+    },
+    "old-eff-in": {
+      "nodes": [
+        { "id": "old-eff-in", "data": { "label": "old-eff-in" } },
+        { "id": "13", "data": { "label": "accept old-eff-in\n" } }
+      ],
+      "edges": [
+        { "id": "39", "source": "old-eff-in", "target": "13", "label": "start" }
+      ]
+    },
+    "new-eff-out": {
+      "nodes": [
+        { "id": "new-eff-out", "data": { "label": "new-eff-out" } },
+        { "id": "76", "data": { "label": "move neweff to new-eff-out\n" } },
+        {
+          "id": "80",
+          "data": {
+            "label": "display \"New Efficiency: \" new-eff-out \"%\"\n"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "40",
+          "source": "new-eff-out",
+          "target": "76",
+          "label": "start"
+        },
+        {
+          "id": "41",
+          "source": "76",
+          "target": "80",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "quantities-equal2": {
+      "nodes": [
+        { "id": "quantities-equal2", "data": { "label": "quantities-equal2" } },
+        { "id": "58", "data": { "label": "if neweff = oldeff\n" } },
+        {
+          "id": "62",
+          "data": { "label": "display quantities-equal1 quantities-equal2\n" }
+        }
+      ],
+      "edges": [
+        {
+          "id": "42",
+          "source": "quantities-equal2",
+          "target": "58",
+          "label": "start"
+        },
+        { "id": "43", "source": "58", "target": "62", "label": "true" }
+      ]
+    },
+    "not-numeric": {
+      "nodes": [
+        { "id": "not-numeric", "data": { "label": "not-numeric" } },
+        {
+          "id": "14",
+          "data": {
+            "label": "if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO\n"
+          }
+        },
+        {
+          "id": "15",
+          "data": { "label": "display \"Old Efficiency\" not-numeric\n" }
+        },
+        {
+          "id": "40",
+          "data": {
+            "label": "if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO\n"
+          }
+        },
+        {
+          "id": "41",
+          "data": { "label": "display \"New Efficiency\" not-numeric\n" }
+        }
+      ],
+      "edges": [
+        {
+          "id": "44",
+          "source": "not-numeric",
+          "target": "14",
+          "label": "start"
+        },
+        { "id": "45", "source": "14", "target": "15", "label": "true" },
+        { "id": "46", "source": "14", "target": "40", "label": "false" },
+        { "id": "47", "source": "40", "target": "41", "label": "true" }
+      ]
+    },
+    "neweff": {
+      "nodes": [
+        { "id": "neweff", "data": { "label": "neweff" } },
+        {
+          "id": "40",
+          "data": {
+            "label": "if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO\n"
+          }
+        },
+        {
+          "id": "43",
+          "data": {
+            "label": "compute neweff = function numval ( new-eff-in )\n"
+          }
+        },
+        { "id": "42", "data": { "label": "if neweff = 0\n" } },
+        { "id": "49", "data": { "label": "if neweff < min-val\n" } },
+        { "id": "53", "data": { "label": "if neweff > max-val\n" } },
+        { "id": "58", "data": { "label": "if neweff = oldeff\n" } },
+        { "id": "63", "data": { "label": "if neweff < oldeff\n" } },
+        {
+          "id": "72",
+          "data": { "label": "subtract oldeff from neweff giving numerator\n" }
+        },
+        {
+          "id": "73",
+          "data": {
+            "label": "divide numerator by neweff giving pcteff rounded\n"
+          }
+        },
+        { "id": "76", "data": { "label": "move neweff to new-eff-out\n" } }
+      ],
+      "edges": [
+        { "id": "48", "source": "neweff", "target": "40", "label": "start" },
+        { "id": "49", "source": "40", "target": "43", "label": "false" },
+        {
+          "id": "50",
+          "source": "43",
+          "target": "42",
+          "label": "sequential next"
+        },
+        { "id": "51", "source": "42", "target": "49", "label": "false" },
+        { "id": "52", "source": "49", "target": "53", "label": "false" },
+        { "id": "53", "source": "53", "target": "58", "label": "false" },
+        { "id": "54", "source": "58", "target": "63", "label": "false" },
+        { "id": "55", "source": "63", "target": "72", "label": "false" },
+        {
+          "id": "56",
+          "source": "72",
+          "target": "73",
+          "label": "sequential next"
+        },
+        {
+          "id": "57",
+          "source": "73",
+          "target": "76",
+          "label": "sequential next"
+        }
+      ]
+    },
+    "functiontest-numval(old-eff-in)": {
+      "nodes": [
+        {
+          "id": "functiontest-numval(old-eff-in)",
+          "data": { "label": "functiontest-numval(old-eff-in)" }
+        },
+        {
+          "id": "14",
+          "data": {
+            "label": "if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO\n"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "58",
+          "source": "functiontest-numval(old-eff-in)",
+          "target": "14",
+          "label": "start"
+        }
+      ]
+    }
+  },
+  "business_variables": [
+    "old-eff-out",
+    "oldeff",
+    "min-val",
+    "numerator",
+    "new-eff-in",
+    "quantity-too-much",
+    "quantity-lower2",
+    "quantity-lower1",
+    "functiontest-numval(new-eff-in)",
+    "quantity-too-small",
+    "max-val",
+    "pct-eff-out",
+    "pcteff",
+    "quantities-equal1",
+    "old-eff-in",
+    "new-eff-out",
+    "quantities-equal2",
+    "not-numeric",
+    "neweff",
+    "functiontest-numval(old-eff-in)"
+  ]
+}

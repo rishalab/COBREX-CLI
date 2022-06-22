@@ -1,68 +1,62 @@
 digraph cluster {
 	graph [label=test]
 	node [color=lightblue shape=box style=filled]
-	1 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+	1 [label="move oldeff to old-eff-out
 "]
+	2 [label="display \"Old Efficiency: \" old-eff-out \"%\"
+"]
+	1 -> 2 [label="sequential next"]
 	node [color=lightgrey shape=diamond style=filled]
-	"functiontest-numval(new-eff-in)" [label="functiontest-numval(new-eff-in)"]
-	"functiontest-numval(new-eff-in)" -> 1 [label=start]
+	"old-eff-out" [label="old-eff-out"]
+	"old-eff-out" -> 1 [label=start]
 	node [color=lightblue shape=box style=filled]
-	4 [label="if neweff = oldeff
+	4 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
 "]
-	5 [label="display quantities-equal1 quantities-equal2
+	6 [label="compute oldeff = function numval ( old-eff-in )
 "]
-	4 -> 5 [label=true]
+	7 [label="if oldeff = 0
+"]
+	9 [label="if oldeff < min-val
+"]
+	11 [label="if oldeff > max-val
+"]
+	13 [label="if neweff = oldeff
+"]
+	15 [label="if neweff < oldeff
+"]
+	17 [label="subtract oldeff from neweff giving numerator
+"]
+	18 [label="move oldeff to old-eff-out
+"]
+	17 -> 18 [label="sequential next"]
+	15 -> 17 [label=false]
+	13 -> 15 [label=false]
+	11 -> 13 [label=false]
+	9 -> 11 [label=false]
+	7 -> 9 [label=false]
+	6 -> 7 [label="sequential next"]
+	4 -> 6 [label=false]
 	node [color=lightgrey shape=diamond style=filled]
-	"quantities-equal1" [label="quantities-equal1"]
-	"quantities-equal1" -> 4 [label=start]
+	oldeff [label=oldeff]
+	oldeff -> 4 [label=start]
 	node [color=lightblue shape=box style=filled]
-	8 [label="if oldeff > max-val
+	20 [label="if oldeff < min-val
 "]
-	10 [label="if neweff > max-val
-"]
-	8 -> 10 [label=false]
-	node [color=lightgrey shape=diamond style=filled]
-	"max-val" [label="max-val"]
-	"max-val" -> 8 [label=start]
-	node [color=lightblue shape=box style=filled]
-	13 [label="subtract oldeff from neweff giving numerator
-"]
-	14 [label="divide numerator by neweff giving pcteff rounded
-"]
-	13 -> 14 [label="sequential next"]
-	node [color=lightgrey shape=diamond style=filled]
-	numerator [label=numerator]
-	numerator -> 13 [label=start]
-	node [color=lightblue shape=box style=filled]
-	16 [label="move neweff to new-eff-out
-"]
-	17 [label="display \"New Efficiency: \" new-eff-out \"%\"
-"]
-	16 -> 17 [label="sequential next"]
-	node [color=lightgrey shape=diamond style=filled]
-	"new-eff-out" [label="new-eff-out"]
-	"new-eff-out" -> 16 [label=start]
-	node [color=lightblue shape=box style=filled]
-	19 [label="if oldeff < min-val
-"]
-	20 [label="display quantity-too-small
-"]
-	19 -> 20 [label=true]
 	22 [label="if neweff < min-val
 "]
-	23 [label="display quantity-too-small
-"]
-	22 -> 23 [label=true]
-	19 -> 22 [label=false]
+	20 -> 22 [label=false]
 	node [color=lightgrey shape=diamond style=filled]
-	"quantity-too-small" [label="quantity-too-small"]
-	"quantity-too-small" -> 19 [label=start]
+	"min-val" [label="min-val"]
+	"min-val" -> 20 [label=start]
 	node [color=lightblue shape=box style=filled]
-	26 [label="accept old-eff-in
+	25 [label="subtract oldeff from neweff giving numerator
 "]
+	26 [label="divide numerator by neweff giving pcteff rounded
+"]
+	25 -> 26 [label="sequential next"]
 	node [color=lightgrey shape=diamond style=filled]
-	"old-eff-in" [label="old-eff-in"]
-	"old-eff-in" -> 26 [label=start]
+	numerator [label=numerator]
+	numerator -> 25 [label=start]
 	node [color=lightblue shape=box style=filled]
 	28 [label="accept new-eff-in
 "]
@@ -70,29 +64,29 @@ digraph cluster {
 	"new-eff-in" [label="new-eff-in"]
 	"new-eff-in" -> 28 [label=start]
 	node [color=lightblue shape=box style=filled]
-	30 [label="if neweff < oldeff
+	30 [label="if oldeff > max-val
 "]
-	31 [label="display quantity-lower1 quantity-lower2
+	31 [label="display quantity-too-much
 "]
 	30 -> 31 [label=true]
-	node [color=lightgrey shape=diamond style=filled]
-	"quantity-lower1" [label="quantity-lower1"]
-	"quantity-lower1" -> 30 [label=start]
-	node [color=lightblue shape=box style=filled]
-	34 [label="if oldeff > max-val
+	33 [label="if neweff > max-val
 "]
-	35 [label="display quantity-too-much
+	34 [label="display quantity-too-much
 "]
-	34 -> 35 [label=true]
-	37 [label="if neweff > max-val
-"]
-	38 [label="display quantity-too-much
-"]
-	37 -> 38 [label=true]
-	34 -> 37 [label=false]
+	33 -> 34 [label=true]
+	30 -> 33 [label=false]
 	node [color=lightgrey shape=diamond style=filled]
 	"quantity-too-much" [label="quantity-too-much"]
-	"quantity-too-much" -> 34 [label=start]
+	"quantity-too-much" -> 30 [label=start]
+	node [color=lightblue shape=box style=filled]
+	37 [label="if neweff < oldeff
+"]
+	38 [label="display quantity-lower1 quantity-lower2
+"]
+	37 -> 38 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-lower2" [label="quantity-lower2"]
+	"quantity-lower2" -> 37 [label=start]
 	node [color=lightblue shape=box style=filled]
 	41 [label="if neweff < oldeff
 "]
@@ -100,138 +94,144 @@ digraph cluster {
 "]
 	41 -> 42 [label=true]
 	node [color=lightgrey shape=diamond style=filled]
-	"quantity-lower2" [label="quantity-lower2"]
-	"quantity-lower2" -> 41 [label=start]
+	"quantity-lower1" [label="quantity-lower1"]
+	"quantity-lower1" -> 41 [label=start]
 	node [color=lightblue shape=box style=filled]
-	45 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+	45 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
 "]
-	46 [label="display \"Old Efficiency\" not-numeric
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(new-eff-in)" [label="functiontest-numval(new-eff-in)"]
+	"functiontest-numval(new-eff-in)" -> 45 [label=start]
+	node [color=lightblue shape=box style=filled]
+	48 [label="if oldeff < min-val
 "]
-	45 -> 46 [label=true]
-	48 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
-"]
-	49 [label="display \"New Efficiency\" not-numeric
+	49 [label="display quantity-too-small
 "]
 	48 -> 49 [label=true]
-	45 -> 48 [label=false]
+	51 [label="if neweff < min-val
+"]
+	52 [label="display quantity-too-small
+"]
+	51 -> 52 [label=true]
+	48 -> 51 [label=false]
 	node [color=lightgrey shape=diamond style=filled]
-	"not-numeric" [label="not-numeric"]
-	"not-numeric" -> 45 [label=start]
+	"quantity-too-small" [label="quantity-too-small"]
+	"quantity-too-small" -> 48 [label=start]
 	node [color=lightblue shape=box style=filled]
-	52 [label="divide numerator by neweff giving pcteff rounded
+	55 [label="if oldeff > max-val
 "]
-	53 [label="multiply 100 by pcteff
+	57 [label="if neweff > max-val
 "]
-	54 [label="move pcteff to pct-eff-out
-"]
-	53 -> 54 [label="sequential next"]
-	52 -> 53 [label="sequential next"]
+	55 -> 57 [label=false]
 	node [color=lightgrey shape=diamond style=filled]
-	pcteff [label=pcteff]
-	pcteff -> 52 [label=start]
+	"max-val" [label="max-val"]
+	"max-val" -> 55 [label=start]
 	node [color=lightblue shape=box style=filled]
-	56 [label="if neweff = oldeff
+	60 [label="move pcteff to pct-eff-out
 "]
-	57 [label="display quantities-equal1 quantities-equal2
+	61 [label="display \"Fuel Savings: \" pct-eff-out \"%\"
 "]
-	56 -> 57 [label=true]
-	node [color=lightgrey shape=diamond style=filled]
-	"quantities-equal2" [label="quantities-equal2"]
-	"quantities-equal2" -> 56 [label=start]
-	node [color=lightblue shape=box style=filled]
-	60 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
-"]
-	node [color=lightgrey shape=diamond style=filled]
-	"functiontest-numval(old-eff-in)" [label="functiontest-numval(old-eff-in)"]
-	"functiontest-numval(old-eff-in)" -> 60 [label=start]
-	node [color=lightblue shape=box style=filled]
-	63 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
-"]
-	65 [label="compute neweff = function numval ( new-eff-in )
-"]
-	66 [label="if neweff = 0
-"]
-	68 [label="if neweff < min-val
-"]
-	70 [label="if neweff > max-val
-"]
-	72 [label="if neweff = oldeff
-"]
-	74 [label="if neweff < oldeff
-"]
-	76 [label="subtract oldeff from neweff giving numerator
-"]
-	77 [label="divide numerator by neweff giving pcteff rounded
-"]
-	78 [label="move neweff to new-eff-out
-"]
-	77 -> 78 [label="sequential next"]
-	76 -> 77 [label="sequential next"]
-	74 -> 76 [label=false]
-	72 -> 74 [label=false]
-	70 -> 72 [label=false]
-	68 -> 70 [label=false]
-	66 -> 68 [label=false]
-	65 -> 66 [label="sequential next"]
-	63 -> 65 [label=false]
-	node [color=lightgrey shape=diamond style=filled]
-	neweff [label=neweff]
-	neweff -> 63 [label=start]
-	node [color=lightblue shape=box style=filled]
-	80 [label="if oldeff < min-val
-"]
-	82 [label="if neweff < min-val
-"]
-	80 -> 82 [label=false]
-	node [color=lightgrey shape=diamond style=filled]
-	"min-val" [label="min-val"]
-	"min-val" -> 80 [label=start]
-	node [color=lightblue shape=box style=filled]
-	85 [label="move pcteff to pct-eff-out
-"]
-	86 [label="display \"Fuel Savings: \" pct-eff-out \"%\"
-"]
-	85 -> 86 [label="sequential next"]
+	60 -> 61 [label="sequential next"]
 	node [color=lightgrey shape=diamond style=filled]
 	"pct-eff-out" [label="pct-eff-out"]
-	"pct-eff-out" -> 85 [label=start]
+	"pct-eff-out" -> 60 [label=start]
 	node [color=lightblue shape=box style=filled]
-	88 [label="move oldeff to old-eff-out
+	63 [label="divide numerator by neweff giving pcteff rounded
 "]
-	89 [label="display \"Old Efficiency: \" old-eff-out \"%\"
+	64 [label="multiply 100 by pcteff
 "]
-	88 -> 89 [label="sequential next"]
+	65 [label="move pcteff to pct-eff-out
+"]
+	64 -> 65 [label="sequential next"]
+	63 -> 64 [label="sequential next"]
 	node [color=lightgrey shape=diamond style=filled]
-	"old-eff-out" [label="old-eff-out"]
-	"old-eff-out" -> 88 [label=start]
+	pcteff [label=pcteff]
+	pcteff -> 63 [label=start]
 	node [color=lightblue shape=box style=filled]
-	91 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+	67 [label="if neweff = oldeff
 "]
-	93 [label="compute oldeff = function numval ( old-eff-in )
+	68 [label="display quantities-equal1 quantities-equal2
 "]
-	94 [label="if oldeff = 0
+	67 -> 68 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantities-equal1" [label="quantities-equal1"]
+	"quantities-equal1" -> 67 [label=start]
+	node [color=lightblue shape=box style=filled]
+	71 [label="accept old-eff-in
 "]
-	96 [label="if oldeff < min-val
+	node [color=lightgrey shape=diamond style=filled]
+	"old-eff-in" [label="old-eff-in"]
+	"old-eff-in" -> 71 [label=start]
+	node [color=lightblue shape=box style=filled]
+	73 [label="move neweff to new-eff-out
 "]
-	98 [label="if oldeff > max-val
+	74 [label="display \"New Efficiency: \" new-eff-out \"%\"
 "]
-	100 [label="if neweff = oldeff
+	73 -> 74 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"new-eff-out" [label="new-eff-out"]
+	"new-eff-out" -> 73 [label=start]
+	node [color=lightblue shape=box style=filled]
+	76 [label="if neweff = oldeff
 "]
-	102 [label="if neweff < oldeff
+	77 [label="display quantities-equal1 quantities-equal2
 "]
-	104 [label="subtract oldeff from neweff giving numerator
+	76 -> 77 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantities-equal2" [label="quantities-equal2"]
+	"quantities-equal2" -> 76 [label=start]
+	node [color=lightblue shape=box style=filled]
+	80 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
 "]
-	105 [label="move oldeff to old-eff-out
+	81 [label="display \"Old Efficiency\" not-numeric
 "]
-	104 -> 105 [label="sequential next"]
-	102 -> 104 [label=false]
-	100 -> 102 [label=false]
+	80 -> 81 [label=true]
+	83 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+"]
+	84 [label="display \"New Efficiency\" not-numeric
+"]
+	83 -> 84 [label=true]
+	80 -> 83 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"not-numeric" [label="not-numeric"]
+	"not-numeric" -> 80 [label=start]
+	node [color=lightblue shape=box style=filled]
+	87 [label="if function test-numval ( new-eff-in ) IS NOT EQUAL ZERO
+"]
+	89 [label="compute neweff = function numval ( new-eff-in )
+"]
+	90 [label="if neweff = 0
+"]
+	92 [label="if neweff < min-val
+"]
+	94 [label="if neweff > max-val
+"]
+	96 [label="if neweff = oldeff
+"]
+	98 [label="if neweff < oldeff
+"]
+	100 [label="subtract oldeff from neweff giving numerator
+"]
+	101 [label="divide numerator by neweff giving pcteff rounded
+"]
+	102 [label="move neweff to new-eff-out
+"]
+	101 -> 102 [label="sequential next"]
+	100 -> 101 [label="sequential next"]
 	98 -> 100 [label=false]
 	96 -> 98 [label=false]
 	94 -> 96 [label=false]
-	93 -> 94 [label="sequential next"]
-	91 -> 93 [label=false]
+	92 -> 94 [label=false]
+	90 -> 92 [label=false]
+	89 -> 90 [label="sequential next"]
+	87 -> 89 [label=false]
 	node [color=lightgrey shape=diamond style=filled]
-	oldeff [label=oldeff]
-	oldeff -> 91 [label=start]
+	neweff [label=neweff]
+	neweff -> 87 [label=start]
+	node [color=lightblue shape=box style=filled]
+	104 [label="if function test-numval ( old-eff-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(old-eff-in)" [label="functiontest-numval(old-eff-in)"]
+	"functiontest-numval(old-eff-in)" -> 104 [label=start]
 }

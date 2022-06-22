@@ -1,0 +1,333 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	2 [label="IF MONEY > PR-VEG AND BAG < MAX-CAP
+"]
+	3 [label="ADD 1 TO BAG
+"]
+	4 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	5 [label="IF MONEY > PR-MEAT AND BAG < MAX-CAP
+"]
+	6 [label="ADD 1 TO BAG
+"]
+	7 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	8 [label="IF MONEY > PR-BREAD AND BAG < MAX-CAP
+"]
+	9 [label="ADD 1 TO BAG
+"]
+	10 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	11 [label="IF MONEY > PR-MILK AND BAG < MAX-CAP
+"]
+	12 [label="ADD 1 TO BAG
+"]
+	13 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	14 [label="IF MONEY > PR-FRUIT AND BAG < MAX-CAP
+"]
+	15 [label="ADD 1 TO BAG
+"]
+	16 [label="IF MONEY <= 0 OR BAG >= MAX-CAP
+"]
+	17 [label="DISPLAY \"NB OF PRODUCTS:\" BAG
+"]
+	16 -> 17 [label=true]
+	15 -> 16 [label="sequential next"]
+	14 -> 15 [label=true]
+	13 -> 14 [label=true]
+	12 -> 13 [label="sequential next"]
+	11 -> 12 [label=true]
+	10 -> 11 [label=true]
+	9 -> 10 [label="sequential next"]
+	8 -> 9 [label=true]
+	7 -> 8 [label=true]
+	6 -> 7 [label="sequential next"]
+	5 -> 6 [label=true]
+	4 -> 5 [label=true]
+	3 -> 4 [label="sequential next"]
+	2 -> 3 [label=true]
+	1 -> 2 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	BAG [label=BAG]
+	BAG -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	31 [label="COMPUTE QT-BREAD = FUNCTION RANDOM ( 1 ) * 10
+"]
+	33 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	34 [label="IF MONEY > PR-BREAD AND BAG < MAX-CAP
+"]
+	35 [label="SUBTRACT 1 FROM QT-BREAD
+"]
+	34 -> 35 [label=true]
+	33 -> 34 [label=true]
+	31 -> 33 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"QT-BREAD" [label="QT-BREAD"]
+	"QT-BREAD" -> 31 [label=start]
+	node [color=lightblue shape=box style=filled]
+	44 [label="COMPUTE PR-MEAT = FUNCTION RANDOM ( 1 ) * 10 + 5
+"]
+	46 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	47 [label="IF MONEY > PR-MEAT AND BAG < MAX-CAP
+"]
+	48 [label="COMPUTE MONEY = MONEY - PR-MEAT
+"]
+	47 -> 48 [label=true]
+	46 -> 47 [label=true]
+	44 -> 46 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PR-MEAT" [label="PR-MEAT"]
+	"PR-MEAT" -> 44 [label=start]
+	node [color=lightblue shape=box style=filled]
+	55 [label="COMPUTE QT-VEG = FUNCTION RANDOM ( 1 ) * 10
+"]
+	57 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	58 [label="IF MONEY > PR-VEG AND BAG < MAX-CAP
+"]
+	59 [label="SUBTRACT 1 FROM QT-VEG
+"]
+	58 -> 59 [label=true]
+	57 -> 58 [label=true]
+	55 -> 57 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"QT-VEG" [label="QT-VEG"]
+	"QT-VEG" -> 55 [label=start]
+	node [color=lightblue shape=box style=filled]
+	64 [label="COMPUTE QT-MEAT = FUNCTION RANDOM ( 1 ) * 10
+"]
+	66 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	67 [label="IF MONEY > PR-MEAT AND BAG < MAX-CAP
+"]
+	68 [label="SUBTRACT 1 FROM QT-MEAT
+"]
+	67 -> 68 [label=true]
+	66 -> 67 [label=true]
+	64 -> 66 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"QT-MEAT" [label="QT-MEAT"]
+	"QT-MEAT" -> 64 [label=start]
+	node [color=lightblue shape=box style=filled]
+	75 [label="COMPUTE PR-BREAD = FUNCTION RANDOM ( 1 ) * 10 + 1
+"]
+	77 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	78 [label="IF MONEY > PR-BREAD AND BAG < MAX-CAP
+"]
+	79 [label="COMPUTE MONEY = MONEY - PR-BREAD
+"]
+	78 -> 79 [label=true]
+	77 -> 78 [label=true]
+	75 -> 77 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PR-BREAD" [label="PR-BREAD"]
+	"PR-BREAD" -> 75 [label=start]
+	node [color=lightblue shape=box style=filled]
+	88 [label="COMPUTE PR-MILK = FUNCTION RANDOM ( 1 ) * 10 + 2
+"]
+	90 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	91 [label="IF MONEY > PR-MILK AND BAG < MAX-CAP
+"]
+	92 [label="COMPUTE MONEY = MONEY - PR-MILK
+"]
+	91 -> 92 [label=true]
+	90 -> 91 [label=true]
+	88 -> 90 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PR-MILK" [label="PR-MILK"]
+	"PR-MILK" -> 88 [label=start]
+	node [color=lightblue shape=box style=filled]
+	103 [label="IF OP = 1
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	OP [label=OP]
+	OP -> 103 [label=start]
+	node [color=lightblue shape=box style=filled]
+	106 [label="COMPUTE PR-FRUIT = FUNCTION RANDOM ( 1 ) * 10 + 1
+"]
+	108 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	109 [label="IF MONEY > PR-FRUIT AND BAG < MAX-CAP
+"]
+	110 [label="COMPUTE MONEY = MONEY - PR-FRUIT
+"]
+	109 -> 110 [label=true]
+	108 -> 109 [label=true]
+	106 -> 108 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PR-FRUIT" [label="PR-FRUIT"]
+	"PR-FRUIT" -> 106 [label=start]
+	node [color=lightblue shape=box style=filled]
+	123 [label="MOVE MONEY TO REST
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	REST [label=REST]
+	REST -> 123 [label=start]
+	node [color=lightblue shape=box style=filled]
+	137 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	138 [label="IF MONEY > PR-VEG AND BAG < MAX-CAP
+"]
+	139 [label="COMPUTE MONEY = MONEY - PR-VEG
+"]
+	140 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	141 [label="IF MONEY > PR-MEAT AND BAG < MAX-CAP
+"]
+	142 [label="COMPUTE MONEY = MONEY - PR-MEAT
+"]
+	143 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	144 [label="IF MONEY > PR-BREAD AND BAG < MAX-CAP
+"]
+	145 [label="COMPUTE MONEY = MONEY - PR-BREAD
+"]
+	146 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	147 [label="IF MONEY > PR-MILK AND BAG < MAX-CAP
+"]
+	148 [label="COMPUTE MONEY = MONEY - PR-MILK
+"]
+	149 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	150 [label="IF MONEY > PR-FRUIT AND BAG < MAX-CAP
+"]
+	151 [label="COMPUTE MONEY = MONEY - PR-FRUIT
+"]
+	152 [label="IF MONEY <= 0 OR BAG >= MAX-CAP
+"]
+	153 [label="MOVE MONEY TO REST
+"]
+	154 [label="DISPLAY \"REST:\" MONEY
+"]
+	153 -> 154 [label="sequential next"]
+	152 -> 153 [label=true]
+	151 -> 152 [label="sequential next"]
+	150 -> 151 [label=true]
+	149 -> 150 [label=true]
+	148 -> 149 [label="sequential next"]
+	147 -> 148 [label=true]
+	146 -> 147 [label=true]
+	145 -> 146 [label="sequential next"]
+	144 -> 145 [label=true]
+	143 -> 144 [label=true]
+	142 -> 143 [label="sequential next"]
+	141 -> 142 [label=true]
+	140 -> 141 [label=true]
+	139 -> 140 [label="sequential next"]
+	138 -> 139 [label=true]
+	137 -> 138 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	MONEY [label=MONEY]
+	MONEY -> 137 [label=start]
+	node [color=lightblue shape=box style=filled]
+	168 [label="COMPUTE PR-VEG = FUNCTION RANDOM ( 1 ) * 10 + 3
+"]
+	170 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	171 [label="IF MONEY > PR-VEG AND BAG < MAX-CAP
+"]
+	172 [label="COMPUTE MONEY = MONEY - PR-VEG
+"]
+	171 -> 172 [label=true]
+	170 -> 171 [label=true]
+	168 -> 170 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"PR-VEG" [label="PR-VEG"]
+	"PR-VEG" -> 168 [label=start]
+	node [color=lightblue shape=box style=filled]
+	177 [label="COMPUTE NEED = FUNCTION RANDOM ( 1 ) * 2
+"]
+	183 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	184 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	185 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	186 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	187 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	186 -> 187 [label=true]
+	185 -> 186 [label=true]
+	184 -> 185 [label=true]
+	183 -> 184 [label=true]
+	177 -> 183 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	NEED [label=NEED]
+	NEED -> 177 [label=start]
+	node [color=lightblue shape=box style=filled]
+	199 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	200 [label="IF MONEY > PR-VEG AND BAG < MAX-CAP
+"]
+	201 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	202 [label="IF MONEY > PR-MEAT AND BAG < MAX-CAP
+"]
+	203 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	204 [label="IF MONEY > PR-BREAD AND BAG < MAX-CAP
+"]
+	205 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	206 [label="IF MONEY > PR-MILK AND BAG < MAX-CAP
+"]
+	207 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	208 [label="IF MONEY > PR-FRUIT AND BAG < MAX-CAP
+"]
+	209 [label="IF MONEY <= 0 OR BAG >= MAX-CAP
+"]
+	208 -> 209 [label=true]
+	207 -> 208 [label=true]
+	206 -> 207 [label=true]
+	205 -> 206 [label=true]
+	204 -> 205 [label=true]
+	203 -> 204 [label=true]
+	202 -> 203 [label=true]
+	201 -> 202 [label=true]
+	200 -> 201 [label=true]
+	199 -> 200 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"MAX-CAP" [label="MAX-CAP"]
+	"MAX-CAP" -> 199 [label=start]
+	node [color=lightblue shape=box style=filled]
+	223 [label="COMPUTE QT-MILK = FUNCTION RANDOM ( 1 ) * 10
+"]
+	225 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	226 [label="IF MONEY > PR-MILK AND BAG < MAX-CAP
+"]
+	227 [label="SUBTRACT 1 FROM QT-MILK
+"]
+	226 -> 227 [label=true]
+	225 -> 226 [label=true]
+	223 -> 225 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"QT-MILK" [label="QT-MILK"]
+	"QT-MILK" -> 223 [label=start]
+	node [color=lightblue shape=box style=filled]
+	238 [label="COMPUTE QT-FRUIT = FUNCTION RANDOM ( 1 ) * 10
+"]
+	240 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	241 [label="IF MONEY > PR-FRUIT AND BAG < MAX-CAP
+"]
+	242 [label="SUBTRACT 1 FROM QT-FRUIT
+"]
+	241 -> 242 [label=true]
+	240 -> 241 [label=true]
+	238 -> 240 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"QT-FRUIT" [label="QT-FRUIT"]
+	"QT-FRUIT" -> 238 [label=start]
+}

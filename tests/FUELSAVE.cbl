@@ -1,4 +1,10 @@
-
+      *****************************************************************
+      * CALCULATE % FUEL SAVINGS BASED ON EFFICIENCY UPGRADE          *
+      *                                                               *
+      * A simple program that calculates the fuel savings percentage  *
+      * based on a combustion efficiency upgrade,                     *
+      *                                                               *
+      *****************************************************************
 
        identification division.
        program-id.   fuelsave.
@@ -6,28 +12,35 @@
        data division.
        working-storage section.
 
+      *****************************************************************
+      *                                                               *
+      * Percent Fuel Savings formula:                                 *
+      *                                                               *
+      * %FuelSavings = [(neweff - oldeff) / neweff] * 100             *
+      *                                                               *
+      *****************************************************************
 
 
-      
+
        01 old-eff-in         pic x(5).
        01 new-eff-in         pic x(5).
 
-      
+
        01 OLDEFF             pic 999V99 USAGE COMP.
        01 NEWEFF             pic 999V99 USAGE COMP.
        01 PCTEFF             pic S999V9999 USAGE COMP.
        01 NUMERATOR          pic S99V99 USAGE COMP.
 
-      
+
        01 OLD-EFF-OUT        pic Z9.99 USAGE DISPLAY.
        01 NEW-EFF-OUT        pic Z9.99 USAGE DISPLAY.
        01 PCT-EFF-OUT        pic Z9.99 USAGE DISPLAY.
 
-      
+
        01 min-val            pic 9 value 1.
        01 max-val            pic 99v99 value 99.99.
 
-      
+
        01 not-numeric        pic x(16) value " is NOT numeric.".
        01 quantity-too-small pic x(18)
                              value "Value must be >= 1".
@@ -59,7 +72,7 @@
            display "Enter old efficiency %: " with no advancing
            accept old-eff-in
 
-    
+
            if function test-numval(old-eff-in) IS NOT EQUAL ZERO then
               display "Old Efficiency" not-numeric
               display spaces
@@ -123,7 +136,7 @@
 
        calculate-it.
 
-      
+
            subtract oldeff from neweff giving numerator
            divide numerator by neweff giving pcteff rounded
 

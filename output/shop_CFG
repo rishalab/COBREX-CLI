@@ -1,0 +1,320 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="INIT .
+ 
+"]
+	2 [label="IF OP = 1
+"]
+	3 [label="DISPLAY \"SHOP IS OPEN\"
+"]
+	6 [label="PERFORM INIT-PRD THROUGH INIT-PRD-FN
+"]
+	8 [label="GO TO INIT-FN
+"]
+	4 [label="INIT-FN .
+ 
+"]
+	12 [label=EXIT
+]
+	13 [label="BUY-VEG .
+ 
+"]
+	14 [label="PERFORM ISNEEDED THROUGH ISNEEDED-FN
+"]
+	16 [label="IF NEED = 1 AND QT-VEG > 0
+"]
+	17 [label="IF MONEY > PR-VEG AND BAG < MAX-CAP
+"]
+	20 [label="ADD 1 TO BAG
+"]
+	23 [label="COMPUTE MONEY = MONEY - PR-VEG
+"]
+	24 [label="SUBTRACT 1 FROM QT-VEG
+"]
+	18 [label="BUY-VEG-FN .
+ 
+"]
+	28 [label=EXIT
+]
+	29 [label="BUY-MEAT .
+ 
+"]
+	30 [label="PERFORM ISNEEDED THROUGH ISNEEDED-FN
+"]
+	32 [label="IF NEED = 1 AND QT-MEAT > 0
+"]
+	33 [label="IF MONEY > PR-MEAT AND BAG < MAX-CAP
+"]
+	36 [label="ADD 1 TO BAG
+"]
+	39 [label="COMPUTE MONEY = MONEY - PR-MEAT
+"]
+	40 [label="SUBTRACT 1 FROM QT-MEAT
+"]
+	34 [label="BUY-MEAT-FN .
+ 
+"]
+	44 [label=EXIT
+]
+	45 [label="BUY-BREAD .
+ 
+"]
+	46 [label="PERFORM ISNEEDED THROUGH ISNEEDED-FN
+"]
+	48 [label="IF NEED = 1 AND QT-BREAD > 0
+"]
+	49 [label="IF MONEY > PR-BREAD AND BAG < MAX-CAP
+"]
+	52 [label="ADD 1 TO BAG
+"]
+	55 [label="COMPUTE MONEY = MONEY - PR-BREAD
+"]
+	56 [label="SUBTRACT 1 FROM QT-BREAD
+"]
+	50 [label="BUY-BREAD-FN .
+ 
+"]
+	60 [label=EXIT
+]
+	61 [label="BUY-MILK .
+ 
+"]
+	62 [label="PERFORM ISNEEDED THRU ISNEEDED-FN
+"]
+	64 [label="IF NEED = 1 AND QT-MILK > 0
+"]
+	65 [label="IF MONEY > PR-MILK AND BAG < MAX-CAP
+"]
+	68 [label="ADD 1 TO BAG
+"]
+	71 [label="COMPUTE MONEY = MONEY - PR-MILK
+"]
+	72 [label="SUBTRACT 1 FROM QT-MILK
+"]
+	66 [label="BUY-MILK-FN .
+ 
+"]
+	76 [label=EXIT
+]
+	77 [label="BUY-FRUIT .
+ 
+"]
+	78 [label="PERFORM ISNEEDED THRU ISNEEDED-FN
+"]
+	80 [label="IF NEED = 1 AND QT-FRUIT > 0
+"]
+	81 [label="IF MONEY > PR-FRUIT AND BAG < MAX-CAP
+"]
+	84 [label="ADD 1 TO BAG
+"]
+	87 [label="COMPUTE MONEY = MONEY - PR-FRUIT
+"]
+	88 [label="SUBTRACT 1 FROM QT-FRUIT
+"]
+	82 [label="BUY-FRUIT-FN .
+ 
+"]
+	92 [label=EXIT
+]
+	93 [label="CHECK .
+ 
+"]
+	94 [label="IF MONEY <= 0 OR BAG >= MAX-CAP
+"]
+	95 [label="GO TO PRINT
+"]
+	101 [label="PRINT .
+ 
+"]
+	102 [label="MOVE MONEY TO REST
+"]
+	103 [label="DISPLAY \"REST:\" MONEY
+"]
+	104 [label="DISPLAY \"NB OF PRODUCTS:\" BAG
+"]
+	105 [label="FIN .
+ 
+"]
+	106 [label="STOP RUN
+"]
+	105 -> 106 [label="sequential next"]
+	104 -> 105 [label="sequential next"]
+	103 -> 104 [label="sequential next"]
+	102 -> 103 [label="sequential next"]
+	101 -> 102 [label="sequential next"]
+	95 -> 101 [label="procedure call"]
+	94 -> 95 [label=true]
+	97 [label="GO TO BUY-VEG
+"]
+	97 -> 13 [label="procedure call"]
+	94 -> 97 [label=false]
+	93 -> 94 [label="sequential next"]
+	92 -> 93 [label="sequential next"]
+	82 -> 92 [label="sequential next"]
+	88 -> 82 [label="sequential next"]
+	87 -> 88 [label="sequential next"]
+	84 -> 87 [label="sequential next"]
+	81 -> 84 [label=true]
+	86 [label="GO TO PRINT
+"]
+	86 -> 101 [label="procedure call"]
+	81 -> 86 [label=false]
+	80 -> 81 [label=true]
+	83 [label="GO TO CHECK
+"]
+	83 -> 93 [label="procedure call"]
+	80 -> 83 [label=false]
+	78 -> 80 [label="perform-exit"]
+	108 [label="ISNEEDED .
+ 
+"]
+	109 [label="COMPUTE NEED = FUNCTION RANDOM ( 1 ) * 2
+"]
+	111 [label="ISNEEDED-FN .
+ 
+"]
+	112 [label=EXIT
+]
+	112 -> 14 [label="procedure backward call"]
+	112 -> 30 [label="procedure backward call"]
+	112 -> 46 [label="procedure backward call"]
+	112 -> 62 [label="procedure backward call"]
+	112 -> 78 [label="procedure backward call"]
+	111 -> 112 [label="sequential next"]
+	109 -> 111 [label="sequential next"]
+	109 -> 111 [label="sequential next"]
+	109 -> 111 [label="sequential next"]
+	109 -> 111 [label="sequential next"]
+	109 -> 111 [label="sequential next"]
+	108 -> 109 [label="sequential next"]
+	78 -> 108 [label="procedure call"]
+	77 -> 78 [label="sequential next"]
+	76 -> 77 [label="sequential next"]
+	66 -> 76 [label="sequential next"]
+	72 -> 66 [label="sequential next"]
+	71 -> 72 [label="sequential next"]
+	68 -> 71 [label="sequential next"]
+	65 -> 68 [label=true]
+	70 [label="GO TO PRINT
+"]
+	70 -> 101 [label="procedure call"]
+	65 -> 70 [label=false]
+	64 -> 65 [label=true]
+	67 [label="GO TO BUY-FRUIT
+"]
+	67 -> 77 [label="procedure call"]
+	64 -> 67 [label=false]
+	62 -> 64 [label="perform-exit"]
+	62 -> 108 [label="procedure call"]
+	61 -> 62 [label="sequential next"]
+	60 -> 61 [label="sequential next"]
+	50 -> 60 [label="sequential next"]
+	56 -> 50 [label="sequential next"]
+	55 -> 56 [label="sequential next"]
+	52 -> 55 [label="sequential next"]
+	49 -> 52 [label=true]
+	54 [label="GO TO PRINT
+"]
+	54 -> 101 [label="procedure call"]
+	49 -> 54 [label=false]
+	48 -> 49 [label=true]
+	51 [label="GO TO BUY-MILK
+"]
+	51 -> 61 [label="procedure call"]
+	48 -> 51 [label=false]
+	46 -> 48 [label="perform-exit"]
+	46 -> 108 [label="procedure call"]
+	45 -> 46 [label="sequential next"]
+	44 -> 45 [label="sequential next"]
+	34 -> 44 [label="sequential next"]
+	40 -> 34 [label="sequential next"]
+	39 -> 40 [label="sequential next"]
+	36 -> 39 [label="sequential next"]
+	33 -> 36 [label=true]
+	38 [label="GO TO PRINT
+"]
+	38 -> 101 [label="procedure call"]
+	33 -> 38 [label=false]
+	32 -> 33 [label=true]
+	35 [label="GO TO BUY-BREAD
+"]
+	35 -> 45 [label="procedure call"]
+	32 -> 35 [label=false]
+	30 -> 32 [label="perform-exit"]
+	30 -> 108 [label="procedure call"]
+	29 -> 30 [label="sequential next"]
+	28 -> 29 [label="sequential next"]
+	18 -> 28 [label="sequential next"]
+	24 -> 18 [label="sequential next"]
+	23 -> 24 [label="sequential next"]
+	20 -> 23 [label="sequential next"]
+	17 -> 20 [label=true]
+	22 [label="GO TO PRINT
+"]
+	22 -> 101 [label="procedure call"]
+	17 -> 22 [label=false]
+	16 -> 17 [label=true]
+	19 [label="GO TO BUY-MEAT
+"]
+	19 -> 29 [label="procedure call"]
+	16 -> 19 [label=false]
+	14 -> 16 [label="perform-exit"]
+	14 -> 108 [label="procedure call"]
+	13 -> 14 [label="sequential next"]
+	12 -> 13 [label="sequential next"]
+	4 -> 12 [label="sequential next"]
+	8 -> 4 [label="procedure call"]
+	6 -> 8 [label="perform-exit"]
+	114 [label="INIT-PRD .
+ 
+"]
+	115 [label="COMPUTE QT-VEG = FUNCTION RANDOM ( 1 ) * 10
+"]
+	116 [label="COMPUTE QT-MEAT = FUNCTION RANDOM ( 1 ) * 10
+"]
+	117 [label="COMPUTE QT-BREAD = FUNCTION RANDOM ( 1 ) * 10
+"]
+	118 [label="COMPUTE QT-MILK = FUNCTION RANDOM ( 1 ) * 10
+"]
+	119 [label="COMPUTE QT-FRUIT = FUNCTION RANDOM ( 1 ) * 10
+"]
+	120 [label="COMPUTE PR-VEG = FUNCTION RANDOM ( 1 ) * 10 + 3
+"]
+	121 [label="COMPUTE PR-MEAT = FUNCTION RANDOM ( 1 ) * 10 + 5
+"]
+	122 [label="COMPUTE PR-BREAD = FUNCTION RANDOM ( 1 ) * 10 + 1
+"]
+	123 [label="COMPUTE PR-MILK = FUNCTION RANDOM ( 1 ) * 10 + 2
+"]
+	124 [label="COMPUTE PR-FRUIT = FUNCTION RANDOM ( 1 ) * 10 + 1
+"]
+	126 [label="INIT-PRD-FN .
+ 
+"]
+	127 [label=EXIT
+]
+	127 -> 6 [label="procedure backward call"]
+	126 -> 127 [label="sequential next"]
+	124 -> 126 [label="sequential next"]
+	123 -> 124 [label="sequential next"]
+	122 -> 123 [label="sequential next"]
+	121 -> 122 [label="sequential next"]
+	120 -> 121 [label="sequential next"]
+	119 -> 120 [label="sequential next"]
+	118 -> 119 [label="sequential next"]
+	117 -> 118 [label="sequential next"]
+	116 -> 117 [label="sequential next"]
+	115 -> 116 [label="sequential next"]
+	114 -> 115 [label="sequential next"]
+	6 -> 114 [label="procedure call"]
+	3 -> 6 [label="sequential next"]
+	2 -> 3 [label=true]
+	5 [label="DISPLAY \"SHOP IS CLOSED\"
+"]
+	10 [label="GO TO INIT
+"]
+	10 -> 1 [label="procedure call"]
+	5 -> 10 [label="sequential next"]
+	2 -> 5 [label=false]
+	1 -> 2 [label="sequential next"]
+}

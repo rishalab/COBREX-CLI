@@ -1262,7 +1262,7 @@ class CFGBuilder(Cobol85Visitor):
 
 
         if ctx.inspectTallyingPhrase() is not  None:
-            source_variables, _ = self.collect_variables(ctx.children[1], [])
+            source_variables, _ = self.collect_variables([ctx.children[1]], [])
 
             for child in ctx.inspectTallyingPhrase().getChildren():
                 if  isinstance(child, Cobol85Parser.InspectForContext):
@@ -1278,7 +1278,7 @@ class CFGBuilder(Cobol85Visitor):
             source_variables, target_variables = self.collect_variables(ctx.getChildren(),
              [Cobol85Parser.IdentifierContext])
         elif ctx.inspectTallyingReplacingPhrase()  is not None:
-            _, target_variables = self.collect_variables(ctx.children[1],
+            _, target_variables = self.collect_variables([ctx.children[1]],
              [Cobol85Parser.IdentifierContext])
             # inspectTallyingReplacingPhrase
             # : TALLYING inspectFor+ inspectReplacingPhrase+
@@ -1813,7 +1813,7 @@ class CFGBuilder(Cobol85Visitor):
         error_clause_ctxs = [Cobol85Parser.OnOverflowPhraseContext,
          Cobol85Parser.NotOnOverflowPhraseContext]
         for child in ctx.getChildren():
-            if child != ctx.END_UNSTRING() and type(child) not in error_clause_ctxs:
+            if child != ctx.END_STRING() and type(child) not in error_clause_ctxs:
                 text_ctx.append(child)
                 valid_children.append(child)
 

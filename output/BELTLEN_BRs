@@ -1,0 +1,276 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="move belt-length to belt-length-out
+"]
+	2 [label="display \"Belt Length: \" belt-length-out
+"]
+	1 -> 2 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"belt-length-out" [label="belt-length-out"]
+	"belt-length-out" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	4 [label="move \"pulley #1 diameter\" to description
+"]
+	5 [label="display \"Enter \" description \": \" with no advancing
+"]
+	6 [label="if function test-numval ( pulley-diameter1-in ) IS NOT EQUAL ZERO
+"]
+	7 [label="display \"Previous \" description not-numeric
+"]
+	6 -> 7 [label=true]
+	5 -> 6 [label="sequential next"]
+	4 -> 5 [label="sequential next"]
+	11 [label="move \"pulley #2 diameter\" to description
+"]
+	12 [label="display \"Enter \" description \": \" with no advancing
+"]
+	13 [label="if function test-numval ( pulley-diameter2-in ) IS NOT EQUAL ZERO
+"]
+	14 [label="display \"Previous \" description not-numeric
+"]
+	13 -> 14 [label=true]
+	12 -> 13 [label="sequential next"]
+	11 -> 12 [label="sequential next"]
+	18 [label="move \"pulley distance\" to description
+"]
+	19 [label="display \"Enter \" description \": \" with no advancing
+"]
+	20 [label="if function test-numval ( pulley-distance-in ) IS NOT EQUAL ZERO
+"]
+	21 [label="display \"Previous \" description not-numeric
+"]
+	20 -> 21 [label=true]
+	19 -> 20 [label="sequential next"]
+	18 -> 19 [label="sequential next"]
+	11 -> 18 [label="perform-exit"]
+	4 -> 11 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	description [label=description]
+	description -> 4 [label=start]
+	node [color=lightblue shape=box style=filled]
+	26 [label="evaluate true
+"]
+	27 [label="when pulley-diameter1 IS EQUAL ZERO
+"]
+	29 [label="when pulley-diameter1 IS NEGATIVE
+"]
+	30 [label="display quantity-too-small
+"]
+	29 -> 30 [label=true]
+	27 -> 29 [label=false]
+	26 -> 27 [label="evaluate when"]
+	33 [label="evaluate true
+"]
+	34 [label="when pulley-diameter2 IS EQUAL ZERO
+"]
+	36 [label="when pulley-diameter2 IS NEGATIVE
+"]
+	37 [label="display quantity-too-small
+"]
+	36 -> 37 [label=true]
+	34 -> 36 [label=false]
+	33 -> 34 [label="evaluate when"]
+	40 [label="evaluate true
+"]
+	41 [label="when pulley-distance IS EQUAL ZERO
+"]
+	43 [label="when pulley-distance IS NEGATIVE
+"]
+	44 [label="display quantity-too-small
+"]
+	43 -> 44 [label=true]
+	41 -> 43 [label=false]
+	40 -> 41 [label="evaluate when"]
+	33 -> 40 [label="perform-exit"]
+	26 -> 33 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-too-small" [label="quantity-too-small"]
+	"quantity-too-small" -> 26 [label=start]
+	node [color=lightblue shape=box style=filled]
+	48 [label="if function test-numval ( pulley-diameter2-in ) IS NOT EQUAL ZERO
+"]
+	50 [label="compute pulley-diameter2 = function numval ( pulley-diameter2-in )
+"]
+	48 -> 50 [label=false]
+	51 [label="evaluate true
+"]
+	52 [label="when pulley-diameter2 IS EQUAL ZERO
+"]
+	54 [label="when pulley-diameter2 IS NEGATIVE
+"]
+	56 [label="when pulley-diameter2 > 99999.9
+"]
+	54 -> 56 [label=false]
+	52 -> 54 [label=false]
+	51 -> 52 [label="evaluate when"]
+	48 -> 51 [label="sequential next"]
+	58 [label="compute belt-length rounded = function pi * ( pulley-diameter1 + pulley-diameter2 ) * 0.5 + ( pulley-distance * 2 ) + ( function abs ( pulley-diameter2 - pulley-diameter1 ) ** 2 / ( pulley-distance * 4 ) )
+"]
+	48 -> 58 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pulley-diameter2" [label="pulley-diameter2"]
+	"pulley-diameter2" -> 48 [label=start]
+	node [color=lightblue shape=box style=filled]
+	60 [label="accept pulley-distance-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pulley-distance-in" [label="pulley-distance-in"]
+	"pulley-distance-in" -> 60 [label=start]
+	node [color=lightblue shape=box style=filled]
+	63 [label="evaluate true
+"]
+	64 [label="when pulley-diameter1 IS EQUAL ZERO
+"]
+	66 [label="when pulley-diameter1 IS NEGATIVE
+"]
+	68 [label="when pulley-diameter1 > 99999.9
+"]
+	69 [label="display quantity-too-much
+"]
+	68 -> 69 [label=true]
+	66 -> 68 [label=false]
+	64 -> 66 [label=false]
+	63 -> 64 [label="evaluate when"]
+	71 [label="evaluate true
+"]
+	72 [label="when pulley-diameter2 IS EQUAL ZERO
+"]
+	74 [label="when pulley-diameter2 IS NEGATIVE
+"]
+	76 [label="when pulley-diameter2 > 99999.9
+"]
+	77 [label="display quantity-too-much
+"]
+	76 -> 77 [label=true]
+	74 -> 76 [label=false]
+	72 -> 74 [label=false]
+	71 -> 72 [label="evaluate when"]
+	79 [label="evaluate true
+"]
+	80 [label="when pulley-distance IS EQUAL ZERO
+"]
+	82 [label="when pulley-distance IS NEGATIVE
+"]
+	84 [label="when pulley-distance > 99999.9
+"]
+	85 [label="display quantity-too-much
+"]
+	84 -> 85 [label=true]
+	82 -> 84 [label=false]
+	80 -> 82 [label=false]
+	79 -> 80 [label="evaluate when"]
+	71 -> 79 [label="perform-exit"]
+	63 -> 71 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"quantity-too-much" [label="quantity-too-much"]
+	"quantity-too-much" -> 63 [label=start]
+	node [color=lightblue shape=box style=filled]
+	88 [label="if function test-numval ( pulley-distance-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(pulley-distance-in)" [label="functiontest-numval(pulley-distance-in)"]
+	"functiontest-numval(pulley-distance-in)" -> 88 [label=start]
+	node [color=lightblue shape=box style=filled]
+	93 [label="if function test-numval ( pulley-distance-in ) IS NOT EQUAL ZERO
+"]
+	95 [label="compute pulley-distance = function numval ( pulley-distance-in )
+"]
+	93 -> 95 [label=false]
+	96 [label="evaluate true
+"]
+	97 [label="when pulley-distance IS EQUAL ZERO
+"]
+	99 [label="when pulley-distance IS NEGATIVE
+"]
+	101 [label="when pulley-distance > 99999.9
+"]
+	99 -> 101 [label=false]
+	97 -> 99 [label=false]
+	96 -> 97 [label="evaluate when"]
+	93 -> 96 [label="sequential next"]
+	103 [label="compute belt-length rounded = function pi * ( pulley-diameter1 + pulley-diameter2 ) * 0.5 + ( pulley-distance * 2 ) + ( function abs ( pulley-diameter2 - pulley-diameter1 ) ** 2 / ( pulley-distance * 4 ) )
+"]
+	93 -> 103 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pulley-distance" [label="pulley-distance"]
+	"pulley-distance" -> 93 [label=start]
+	node [color=lightblue shape=box style=filled]
+	105 [label="accept pulley-diameter1-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pulley-diameter1-in" [label="pulley-diameter1-in"]
+	"pulley-diameter1-in" -> 105 [label=start]
+	node [color=lightblue shape=box style=filled]
+	108 [label="accept pulley-diameter2-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pulley-diameter2-in" [label="pulley-diameter2-in"]
+	"pulley-diameter2-in" -> 108 [label=start]
+	node [color=lightblue shape=box style=filled]
+	111 [label="if function test-numval ( pulley-diameter1-in ) IS NOT EQUAL ZERO
+"]
+	113 [label="compute pulley-diameter1 = function numval ( pulley-diameter1-in )
+"]
+	111 -> 113 [label=false]
+	114 [label="evaluate true
+"]
+	115 [label="when pulley-diameter1 IS EQUAL ZERO
+"]
+	117 [label="when pulley-diameter1 IS NEGATIVE
+"]
+	119 [label="when pulley-diameter1 > 99999.9
+"]
+	117 -> 119 [label=false]
+	115 -> 117 [label=false]
+	114 -> 115 [label="evaluate when"]
+	111 -> 114 [label="sequential next"]
+	121 [label="compute belt-length rounded = function pi * ( pulley-diameter1 + pulley-diameter2 ) * 0.5 + ( pulley-distance * 2 ) + ( function abs ( pulley-diameter2 - pulley-diameter1 ) ** 2 / ( pulley-distance * 4 ) )
+"]
+	111 -> 121 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"pulley-diameter1" [label="pulley-diameter1"]
+	"pulley-diameter1" -> 111 [label=start]
+	node [color=lightblue shape=box style=filled]
+	123 [label="if function test-numval ( pulley-diameter2-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(pulley-diameter2-in)" [label="functiontest-numval(pulley-diameter2-in)"]
+	"functiontest-numval(pulley-diameter2-in)" -> 123 [label=start]
+	node [color=lightblue shape=box style=filled]
+	128 [label="if function test-numval ( pulley-diameter1-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(pulley-diameter1-in)" [label="functiontest-numval(pulley-diameter1-in)"]
+	"functiontest-numval(pulley-diameter1-in)" -> 128 [label=start]
+	node [color=lightblue shape=box style=filled]
+	133 [label="if function test-numval ( pulley-diameter1-in ) IS NOT EQUAL ZERO
+"]
+	134 [label="display \"Previous \" description not-numeric
+"]
+	133 -> 134 [label=true]
+	138 [label="if function test-numval ( pulley-diameter2-in ) IS NOT EQUAL ZERO
+"]
+	139 [label="display \"Previous \" description not-numeric
+"]
+	138 -> 139 [label=true]
+	143 [label="if function test-numval ( pulley-distance-in ) IS NOT EQUAL ZERO
+"]
+	144 [label="display \"Previous \" description not-numeric
+"]
+	143 -> 144 [label=true]
+	138 -> 143 [label="perform-exit"]
+	133 -> 138 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"not-numeric" [label="not-numeric"]
+	"not-numeric" -> 133 [label=start]
+	node [color=lightblue shape=box style=filled]
+	149 [label="compute belt-length rounded = function pi * ( pulley-diameter1 + pulley-diameter2 ) * 0.5 + ( pulley-distance * 2 ) + ( function abs ( pulley-diameter2 - pulley-diameter1 ) ** 2 / ( pulley-distance * 4 ) )
+"]
+	150 [label="move belt-length to belt-length-out
+"]
+	149 -> 150 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"belt-length" [label="belt-length"]
+	"belt-length" -> 149 [label=start]
+}

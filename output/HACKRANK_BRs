@@ -1,0 +1,519 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	2 [label="move hack-in-id to hack-out-id
+"]
+	1 -> 2 [label="sequential next"]
+	1 -> 1 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-id" [label="hack-in-id"]
+	"hack-in-id" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	13 [label="unstring hack-in-create-dt delimited by space into create-date-stamp create-time-stamp
+"]
+	14 [label="unstring create-time-stamp delimited by \":\" into created-hour actual-minute
+"]
+	13 -> 14 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"create-time-stamp" [label="create-time-stamp"]
+	"create-time-stamp" -> 13 [label=start]
+	node [color=lightblue shape=box style=filled]
+	18 [label="compute age rounded = ( hh - hour ) + ( minute / 60 )
+"]
+	19 [label="compute score = ( votes - 1 ) ** 0.8 / ( age + 2 ) ** 1.8
+"]
+	18 -> 19 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	age [label=age]
+	age -> 18 [label=start]
+	node [color=lightblue shape=box style=filled]
+	30 [label="move function current-date to datetime
+"]
+	31 [label="move da to todays-day
+"]
+	30 -> 31 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	da [label=da]
+	da -> 30 [label=start]
+	node [color=lightblue shape=box style=filled]
+	34 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	34 -> 34 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-comments" [label="hack-in-comments"]
+	"hack-in-comments" -> 34 [label=start]
+	node [color=lightblue shape=box style=filled]
+	39 [label="open input hack-in-file
+"]
+	41 [label="read hack-in-file
+"]
+	44 [label="close hack-in-file
+"]
+	41 -> 44 [label="perform-exit"]
+	39 -> 41 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-file" [label="hack-in-file"]
+	"hack-in-file" -> 39 [label=start]
+	node [color=lightblue shape=box style=filled]
+	47 [label="unstring hack-in-create-dt delimited by space into create-date-stamp create-time-stamp
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"create-date-stamp" [label="create-date-stamp"]
+	"create-date-stamp" -> 47 [label=start]
+	node [color=lightblue shape=box style=filled]
+	51 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	51 -> 51 [label=false]
+	51 -> 51 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval-f(hack-in-comments)" [label="functiontest-numval-f(hack-in-comments)"]
+	"functiontest-numval-f(hack-in-comments)" -> 51 [label=start]
+	node [color=lightblue shape=box style=filled]
+	60 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	datetime [label=datetime]
+	datetime -> 60 [label=start]
+	node [color=lightblue shape=box style=filled]
+	63 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	63 -> 63 [label=false]
+	63 -> 63 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval-f(hack-in-points)" [label="functiontest-numval-f(hack-in-points)"]
+	"functiontest-numval-f(hack-in-points)" -> 63 [label=start]
+	node [color=lightblue shape=box style=filled]
+	72 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	72 -> 72 [label=false]
+	72 -> 72 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval-f(actual-minute)" [label="functiontest-numval-f(actual-minute)"]
+	"functiontest-numval-f(actual-minute)" -> 72 [label=start]
+	node [color=lightblue shape=box style=filled]
+	81 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	82 [label="compute points = function numval-f ( hack-in-points )
+"]
+	83 [label="add points to comments giving votes
+"]
+	82 -> 83 [label="sequential next"]
+	81 -> 82 [label=true]
+	81 -> 81 [label=false]
+	81 -> 81 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	points [label=points]
+	points -> 81 [label=start]
+	node [color=lightblue shape=box style=filled]
+	96 [label="move hack-in-author to hack-out-author
+"]
+	97 [label="move hack-out-record to hack-filtered
+"]
+	96 -> 97 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-out-author" [label="hack-out-author"]
+	"hack-out-author" -> 96 [label=start]
+	node [color=lightblue shape=box style=filled]
+	108 [label="move rpt-hdr-ln ( 1 ) to hack-filtered
+"]
+	109 [label="write hack-filtered
+"]
+	108 -> 109 [label="sequential next"]
+	111 [label="move rpt-hdr-ln ( counter ) to hack-filtered
+"]
+	112 [label="write hack-filtered after advancing 1 line
+"]
+	111 -> 112 [label="sequential next"]
+	114 [label="move hack-out-record to hack-filtered
+"]
+	115 [label="write hack-filtered after advancing 1 line
+"]
+	114 -> 115 [label="sequential next"]
+	111 -> 114 [label="perform-exit"]
+	108 -> 111 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-filtered" [label="hack-filtered"]
+	"hack-filtered" -> 108 [label=start]
+	node [color=lightblue shape=box style=filled]
+	126 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	tzm [label=tzm]
+	tzm -> 126 [label=start]
+	node [color=lightblue shape=box style=filled]
+	129 [label="move first-report-line to rpt-hdr-ln ( 1 )
+"]
+	130 [label="move rpt-hdr-ln ( 1 ) to hack-filtered
+"]
+	129 -> 130 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"rpt-hdr-ln(1)" [label="rpt-hdr-ln(1)"]
+	"rpt-hdr-ln(1)" -> 129 [label=start]
+	node [color=lightblue shape=box style=filled]
+	133 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	134 [label="move hack-in-title to hack-out-title
+"]
+	133 -> 134 [label="sequential next"]
+	133 -> 133 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-title" [label="hack-in-title"]
+	"hack-in-title" -> 133 [label=start]
+	node [color=lightblue shape=box style=filled]
+	145 [label="move actual-time-stamp to hack-out-time
+"]
+	146 [label="move hack-out-record to hack-filtered
+"]
+	145 -> 146 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-out-time" [label="hack-out-time"]
+	"hack-out-time" -> 145 [label=start]
+	node [color=lightblue shape=box style=filled]
+	157 [label="move hack-in-title to hack-out-title
+"]
+	158 [label="move hack-out-record to hack-filtered
+"]
+	157 -> 158 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-out-title" [label="hack-out-title"]
+	"hack-out-title" -> 157 [label=start]
+	node [color=lightblue shape=box style=filled]
+	169 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	ho [label=ho]
+	ho -> 169 [label=start]
+	node [color=lightblue shape=box style=filled]
+	172 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	172 -> 172 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-points" [label="hack-in-points"]
+	"hack-in-points" -> 172 [label=start]
+	node [color=lightblue shape=box style=filled]
+	177 [label="perform 115-write-report-headers varying counter from 2 by 1 until counter is equal to 6
+"]
+	177 -> 177 [label="procedure call"]
+	180 [label="move zero to counter
+"]
+	181 [label="inspect inspected-title tallying counter for all search-string-1
+"]
+	182 [label="if counter is greater than zero
+"]
+	183 [label="move zero to counter
+"]
+	184 [label="inspect inspected-title tallying counter for all search-string-2
+"]
+	185 [label="if counter is greater than zero
+"]
+	184 -> 185 [label="sequential next"]
+	183 -> 184 [label="sequential next"]
+	182 -> 183 [label=true]
+	182 -> 183 [label=false]
+	181 -> 182 [label="sequential next"]
+	180 -> 181 [label="sequential next"]
+	177 -> 180 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	counter [label=counter]
+	counter -> 177 [label=start]
+	node [color=lightblue shape=box style=filled]
+	196 [label="move hack-in-id to hack-out-id
+"]
+	197 [label="move hack-out-record to hack-filtered
+"]
+	196 -> 197 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-out-id" [label="hack-out-id"]
+	"hack-out-id" -> 196 [label=start]
+	node [color=lightblue shape=box style=filled]
+	208 [label="open output hack-filtered-file
+"]
+	210 [label="close hack-filtered-file
+"]
+	208 -> 210 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-filtered-file" [label="hack-filtered-file"]
+	"hack-filtered-file" -> 208 [label=start]
+	node [color=lightblue shape=box style=filled]
+	213 [label="move da to todays-day
+"]
+	214 [label="move todays-date to tdys-date-out
+"]
+	213 -> 214 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"todays-day" [label="todays-day"]
+	"todays-day" -> 213 [label=start]
+	node [color=lightblue shape=box style=filled]
+	217 [label="move report-time to rpt-time-out
+"]
+	218 [label="move first-report-line to rpt-hdr-ln ( 1 )
+"]
+	217 -> 218 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"rpt-time-out" [label="rpt-time-out"]
+	"rpt-time-out" -> 217 [label=start]
+	node [color=lightblue shape=box style=filled]
+	221 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	221 -> 221 [label=false]
+	221 -> 221 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval-f(actual-hour)" [label="functiontest-numval-f(actual-hour)"]
+	"functiontest-numval-f(actual-hour)" -> 221 [label=start]
+	node [color=lightblue shape=box style=filled]
+	230 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	231 [label="compute comments = function numval-f ( hack-in-comments )
+"]
+	232 [label="add points to comments giving votes
+"]
+	231 -> 232 [label="sequential next"]
+	230 -> 231 [label=true]
+	230 -> 230 [label=false]
+	230 -> 230 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	comments [label=comments]
+	comments -> 230 [label=start]
+	node [color=lightblue shape=box style=filled]
+	245 [label="move function lower-case ( hack-in-title ) to inspected-title
+"]
+	246 [label="inspect inspected-title tallying counter for all search-string-1
+"]
+	247 [label="inspect inspected-title tallying counter for all search-string-2
+"]
+	246 -> 247 [label="sequential next"]
+	245 -> 246 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"inspected-title" [label="inspected-title"]
+	"inspected-title" -> 245 [label=start]
+	node [color=lightblue shape=box style=filled]
+	256 [label="evaluate function test-numval-f ( created-hour )
+"]
+	257 [label="when zero
+"]
+	258 [label="if function numval-f ( created-hour ) < 10
+"]
+	259 [label="string \"0\" delimited by x'00' created-hour delimited by x'00' into actual-hour
+"]
+	260 [label="move actual-time-stamp to hack-out-time
+"]
+	259 -> 260 [label="sequential next"]
+	258 -> 259 [label=true]
+	266 [label="move created-hour to actual-hour
+"]
+	258 -> 266 [label=false]
+	257 -> 258 [label=true]
+	256 -> 257 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	"actual-hour" [label="actual-hour"]
+	"actual-hour" -> 256 [label=start]
+	node [color=lightblue shape=box style=filled]
+	271 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	mi [label=mi]
+	mi -> 271 [label=start]
+	node [color=lightblue shape=box style=filled]
+	274 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	275 [label="compute minute = function numval-f ( actual-minute )
+"]
+	276 [label="compute age rounded = ( hh - hour ) + ( minute / 60 )
+"]
+	275 -> 276 [label="sequential next"]
+	274 -> 275 [label=true]
+	274 -> 274 [label=false]
+	274 -> 274 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	minute [label=minute]
+	minute -> 274 [label=start]
+	node [color=lightblue shape=box style=filled]
+	289 [label="move todays-date to tdys-date-out
+"]
+	290 [label="move first-report-line to rpt-hdr-ln ( 1 )
+"]
+	289 -> 290 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"tdys-date-out" [label="tdys-date-out"]
+	"tdys-date-out" -> 289 [label=start]
+	node [color=lightblue shape=box style=filled]
+	293 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	294 [label="move hack-in-author to hack-out-author
+"]
+	293 -> 294 [label="sequential next"]
+	293 -> 293 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-author" [label="hack-in-author"]
+	"hack-in-author" -> 293 [label=start]
+	node [color=lightblue shape=box style=filled]
+	305 [label="compute score = ( votes - 1 ) ** 0.8 / ( age + 2 ) ** 1.8
+"]
+	306 [label="move score to hack-out-score
+"]
+	305 -> 306 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	score [label=score]
+	score -> 305 [label=start]
+	node [color=lightblue shape=box style=filled]
+	317 [label="move score to hack-out-score
+"]
+	319 [label="move hack-out-record to hack-filtered
+"]
+	317 -> 319 [label="perform-exit"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-out-score" [label="hack-out-score"]
+	"hack-out-score" -> 317 [label=start]
+	node [color=lightblue shape=box style=filled]
+	330 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	tzh [label=tzh]
+	tzh -> 330 [label=start]
+	node [color=lightblue shape=box style=filled]
+	333 [label="move function current-date to datetime
+"]
+	334 [label="move year to todays-year
+"]
+	333 -> 334 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	year [label=year]
+	year -> 333 [label=start]
+	node [color=lightblue shape=box style=filled]
+	337 [label="unstring create-time-stamp delimited by \":\" into created-hour actual-minute
+"]
+	338 [label="move actual-time-stamp to hack-out-time
+"]
+	337 -> 338 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"actual-minute" [label="actual-minute"]
+	"actual-minute" -> 337 [label=start]
+	node [color=lightblue shape=box style=filled]
+	348 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	se [label=se]
+	se -> 348 [label=start]
+	node [color=lightblue shape=box style=filled]
+	351 [label="move function current-date to datetime
+"]
+	352 [label="move mo to todays-month
+"]
+	351 -> 352 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	mo [label=mo]
+	mo -> 351 [label=start]
+	node [color=lightblue shape=box style=filled]
+	355 [label="evaluate function test-numval-f ( created-hour )
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval-f(created-hour)" [label="functiontest-numval-f(created-hour)"]
+	"functiontest-numval-f(created-hour)" -> 355 [label=start]
+	node [color=lightblue shape=box style=filled]
+	359 [label="add points to comments giving votes
+"]
+	360 [label="compute score = ( votes - 1 ) ** 0.8 / ( age + 2 ) ** 1.8
+"]
+	359 -> 360 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	votes [label=votes]
+	votes -> 359 [label=start]
+	node [color=lightblue shape=box style=filled]
+	371 [label="unstring create-time-stamp delimited by \":\" into created-hour actual-minute
+"]
+	372 [label="evaluate function test-numval-f ( created-hour )
+"]
+	373 [label="when zero
+"]
+	374 [label="if function numval-f ( created-hour ) < 10
+"]
+	375 [label="string \"0\" delimited by x'00' created-hour delimited by x'00' into actual-hour
+"]
+	374 -> 375 [label=true]
+	377 [label="move created-hour to actual-hour
+"]
+	374 -> 377 [label=false]
+	373 -> 374 [label=true]
+	372 -> 373 [label="evaluate when"]
+	371 -> 372 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"created-hour" [label="created-hour"]
+	"created-hour" -> 371 [label=start]
+	node [color=lightblue shape=box style=filled]
+	382 [label="unstring hack-in delimited by \",\" into hack-in-id hack-in-title hack-in-points hack-in-comments hack-in-author hack-in-create-dt
+"]
+	383 [label="unstring hack-in-create-dt delimited by space into create-date-stamp create-time-stamp
+"]
+	382 -> 383 [label="sequential next"]
+	382 -> 382 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"hack-in-create-dt" [label="hack-in-create-dt"]
+	"hack-in-create-dt" -> 382 [label=start]
+	node [color=lightblue shape=box style=filled]
+	388 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	plsormns [label=plsormns]
+	plsormns -> 388 [label=start]
+	node [color=lightblue shape=box style=filled]
+	391 [label="move mo to todays-month
+"]
+	392 [label="move todays-date to tdys-date-out
+"]
+	391 -> 392 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"todays-month" [label="todays-month"]
+	"todays-month" -> 391 [label=start]
+	node [color=lightblue shape=box style=filled]
+	395 [label="read hack-in-file
+"]
+	396 [label="move \"Y\" to end-of-file-flag
+"]
+	395 -> 396 [label=AtEnd]
+	node [color=lightgrey shape=diamond style=filled]
+	"end-of-file-flag" [label="end-of-file-flag"]
+	"end-of-file-flag" -> 395 [label=start]
+	node [color=lightblue shape=box style=filled]
+	400 [label="evaluate function test-numval-f ( created-hour )
+"]
+	401 [label="when zero
+"]
+	402 [label="if function numval-f ( created-hour ) < 10
+"]
+	401 -> 402 [label=true]
+	400 -> 401 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functionnumval-f(created-hour)" [label="functionnumval-f(created-hour)"]
+	"functionnumval-f(created-hour)" -> 400 [label=start]
+	node [color=lightblue shape=box style=filled]
+	408 [label="if function test-numval-f ( actual-hour ) is equal to zero AND function test-numval-f ( actual-minute ) is equal to zero AND function test-numval-f ( hack-in-points ) is equal to zero AND function test-numval-f ( hack-in-comments ) is equal to zero
+"]
+	409 [label="compute hour = function numval-f ( actual-hour )
+"]
+	410 [label="compute age rounded = ( hh - hour ) + ( minute / 60 )
+"]
+	409 -> 410 [label="sequential next"]
+	408 -> 409 [label=true]
+	408 -> 408 [label=false]
+	408 -> 408 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	hour [label=hour]
+	hour -> 408 [label=start]
+	node [color=lightblue shape=box style=filled]
+	423 [label="move function current-date to datetime
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	hs [label=hs]
+	hs -> 423 [label=start]
+	node [color=lightblue shape=box style=filled]
+	426 [label="move year to todays-year
+"]
+	427 [label="move todays-date to tdys-date-out
+"]
+	426 -> 427 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"todays-year" [label="todays-year"]
+	"todays-year" -> 426 [label=start]
+}

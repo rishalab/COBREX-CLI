@@ -1,0 +1,46 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="100-MAIN-PARA .
+ 
+"]
+	2 [label="PERFORM VARYING COUNTER FROM 1 BY 1 UNTIL COUNTER IS EQUAL TO 101
+"]
+	3 [label="MOVE ALL SPACES TO NONSENSE
+"]
+	5 [label="EVALUATE TRUE
+"]
+	6 [label="WHEN ( FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO AND FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO )
+"]
+	8 [label="MOVE \"FizzBuzz\" TO NONSENSE
+"]
+	7 [label="DISPLAY NONSENSE
+"]
+	7 -> 2 [label="sequential next"]
+	8 -> 7 [label="sequential next"]
+	6 -> 8 [label=true]
+	9 [label="WHEN FUNCTION MOD ( COUNTER 3 ) IS EQUAL TO ZERO
+"]
+	12 [label="MOVE \"Fizz\" TO NONSENSE
+"]
+	12 -> 7 [label="sequential next"]
+	9 -> 12 [label=true]
+	13 [label="WHEN FUNCTION MOD ( COUNTER 5 ) IS EQUAL TO ZERO
+"]
+	16 [label="MOVE \"Buzz\" TO NONSENSE
+"]
+	16 -> 7 [label="sequential next"]
+	13 -> 16 [label=true]
+	20 [label="MOVE COUNTER TO NONSENSE
+"]
+	20 -> 7 [label="sequential next"]
+	13 -> 20 [label=false]
+	9 -> 13 [label=false]
+	6 -> 9 [label=false]
+	5 -> 6 [label="evaluate when"]
+	3 -> 5 [label="sequential next"]
+	2 -> 3 [label=iteration]
+	4 [label="STOP RUN
+"]
+	2 -> 4 [label="perform-exit"]
+	1 -> 2 [label="sequential next"]
+}

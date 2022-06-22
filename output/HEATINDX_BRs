@@ -1,0 +1,318 @@
+digraph cluster {
+	graph [label=test]
+	node [color=lightblue shape=box style=filled]
+	1 [label="accept outside-temp-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"outside-temp-in" [label="outside-temp-in"]
+	"outside-temp-in" -> 1 [label=start]
+	node [color=lightblue shape=box style=filled]
+	5 [label="if outside-temp > max-temp
+"]
+	6 [label="display \"Temperature \" too-much max-temp \" degF.\"
+"]
+	5 -> 6 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"max-temp" [label="max-temp"]
+	"max-temp" -> 5 [label=start]
+	node [color=lightblue shape=box style=filled]
+	11 [label="compute heat-index rounded = 0.5 * ( outside-temp + 61.0 + ( ( outside-temp - 68.0 ) * 1.2 ) + relative-humidity * 0.094 )
+"]
+	12 [label="compute heat-index rounded = function mean ( heat-index outside-temp )
+"]
+	13 [label="evaluate TRUE
+"]
+	14 [label="when outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 112 AND relative-humidity IS LESS THAN 13
+"]
+	15 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	16 [label="subtract adjustment from heat-index
+"]
+	17 [label="move heat-index to heat-index-out
+"]
+	18 [label="evaluate TRUE
+"]
+	19 [label="when heat-index > 79 AND heat-index < 90
+"]
+	21 [label="when heat-index >= 90 AND heat-index < 105
+"]
+	23 [label="when heat-index >= 105 AND heat-index < 130
+"]
+	25 [label="when heat-index >= 130
+"]
+	23 -> 25 [label=false]
+	21 -> 23 [label=false]
+	19 -> 21 [label=false]
+	18 -> 19 [label="evaluate when"]
+	17 -> 18 [label="sequential next"]
+	16 -> 17 [label="sequential next"]
+	15 -> 16 [label="sequential next"]
+	14 -> 15 [label=true]
+	30 [label="when relative-humidity IS GREATER THAN 85 AND outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 87
+"]
+	31 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	32 [label="add adjustment to heat-index
+"]
+	32 -> 17 [label="sequential next"]
+	31 -> 32 [label="sequential next"]
+	30 -> 31 [label=true]
+	35 [label="when heat-index IS GREATER THAN 80
+"]
+	36 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	36 -> 17 [label="sequential next"]
+	35 -> 36 [label=true]
+	35 -> 17 [label=false]
+	30 -> 35 [label=false]
+	14 -> 30 [label=false]
+	13 -> 14 [label="evaluate when"]
+	12 -> 13 [label="sequential next"]
+	11 -> 12 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"heat-index" [label="heat-index"]
+	"heat-index" -> 11 [label=start]
+	node [color=lightblue shape=box style=filled]
+	45 [label="move heat-index to heat-index-out
+"]
+	46 [label="display \"Heat Index: \" heat-index-out \" degF\"
+"]
+	45 -> 46 [label="sequential next"]
+	45 -> 45 [label=false]
+	45 -> 45 [label=false]
+	45 -> 45 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"heat-index-out" [label="heat-index-out"]
+	"heat-index-out" -> 45 [label=start]
+	node [color=lightblue shape=box style=filled]
+	57 [label="if function test-numval ( relative-humidity-in ) IS NOT EQUAL ZERO
+"]
+	59 [label="compute relative-humidity = function numval ( relative-humidity-in )
+"]
+	60 [label="if relative-humidity IS EQUAL ZERO
+"]
+	62 [label="if relative-humidity > max-rh
+"]
+	64 [label="if relative-humidity < min-rh
+"]
+	66 [label="move relative-humidity to relative-humidity-out
+"]
+	67 [label="compute heat-index rounded = 0.5 * ( outside-temp + 61.0 + ( ( outside-temp - 68.0 ) * 1.2 ) + relative-humidity * 0.094 )
+"]
+	68 [label="evaluate TRUE
+"]
+	69 [label="when outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 112 AND relative-humidity IS LESS THAN 13
+"]
+	70 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	71 [label="compute adjustment rounded = ( ( 13 - relative-humidity ) / 4 ) * function sqrt ( ( 17 - function abs ( outside-temp - 95 ) ) / 17 )
+"]
+	70 -> 71 [label="sequential next"]
+	69 -> 70 [label=true]
+	73 [label="when relative-humidity IS GREATER THAN 85 AND outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 87
+"]
+	74 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	75 [label="compute adjustment rounded = ( ( relative-humidity - 85 ) / 10 ) * ( ( 87 - outside-temp ) / 5 )
+"]
+	74 -> 75 [label="sequential next"]
+	73 -> 74 [label=true]
+	77 [label="when heat-index IS GREATER THAN 80
+"]
+	78 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	77 -> 78 [label=true]
+	73 -> 77 [label=false]
+	69 -> 73 [label=false]
+	68 -> 69 [label="evaluate when"]
+	67 -> 68 [label="sequential next"]
+	66 -> 67 [label="sequential next"]
+	64 -> 66 [label=false]
+	62 -> 64 [label=false]
+	60 -> 62 [label=false]
+	59 -> 60 [label="sequential next"]
+	57 -> 59 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"relative-humidity" [label="relative-humidity"]
+	"relative-humidity" -> 57 [label=start]
+	node [color=lightblue shape=box style=filled]
+	85 [label="if relative-humidity < min-rh
+"]
+	86 [label="display \"Relative humidity \" too-small min-rh \"%.\"
+"]
+	85 -> 86 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"min-rh" [label="min-rh"]
+	"min-rh" -> 85 [label=start]
+	node [color=lightblue shape=box style=filled]
+	92 [label="evaluate TRUE
+"]
+	93 [label="when outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 112 AND relative-humidity IS LESS THAN 13
+"]
+	94 [label="compute adjustment rounded = ( ( 13 - relative-humidity ) / 4 ) * function sqrt ( ( 17 - function abs ( outside-temp - 95 ) ) / 17 )
+"]
+	95 [label="subtract adjustment from heat-index
+"]
+	94 -> 95 [label="sequential next"]
+	93 -> 94 [label=true]
+	97 [label="when relative-humidity IS GREATER THAN 85 AND outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 87
+"]
+	98 [label="compute adjustment rounded = ( ( relative-humidity - 85 ) / 10 ) * ( ( 87 - outside-temp ) / 5 )
+"]
+	99 [label="add adjustment to heat-index
+"]
+	98 -> 99 [label="sequential next"]
+	97 -> 98 [label=true]
+	93 -> 97 [label=false]
+	92 -> 93 [label="evaluate when"]
+	node [color=lightgrey shape=diamond style=filled]
+	adjustment [label=adjustment]
+	adjustment -> 92 [label=start]
+	node [color=lightblue shape=box style=filled]
+	106 [label="if relative-humidity > max-rh
+"]
+	107 [label="display \"Relative humidity \" too-much max-rh \"%.\"
+"]
+	106 -> 107 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"max-rh" [label="max-rh"]
+	"max-rh" -> 106 [label=start]
+	node [color=lightblue shape=box style=filled]
+	113 [label="move relative-humidity to relative-humidity-out
+"]
+	114 [label="display \"Relative Humidity: \" relative-humidity-out \"%\"
+"]
+	113 -> 114 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"relative-humidity-out" [label="relative-humidity-out"]
+	"relative-humidity-out" -> 113 [label=start]
+	node [color=lightblue shape=box style=filled]
+	122 [label="if function test-numval ( outside-temp-in ) IS NOT EQUAL ZERO
+"]
+	124 [label="compute outside-temp = function numval ( outside-temp-in )
+"]
+	125 [label="if outside-temp IS EQUAL ZERO
+"]
+	127 [label="if outside-temp > max-temp
+"]
+	129 [label="if outside-temp < min-temp
+"]
+	131 [label="move outside-temp to outside-temp-out
+"]
+	132 [label="compute heat-index rounded = 0.5 * ( outside-temp + 61.0 + ( ( outside-temp - 68.0 ) * 1.2 ) + relative-humidity * 0.094 )
+"]
+	133 [label="evaluate TRUE
+"]
+	134 [label="when outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 112 AND relative-humidity IS LESS THAN 13
+"]
+	135 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	134 -> 135 [label=true]
+	137 [label="when relative-humidity IS GREATER THAN 85 AND outside-temp IS GREATER THAN OR EQUAL TO 80 AND outside-temp IS LESS THAN OR EQUAL TO 87
+"]
+	138 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	139 [label="compute adjustment rounded = ( ( relative-humidity - 85 ) / 10 ) * ( ( 87 - outside-temp ) / 5 )
+"]
+	138 -> 139 [label="sequential next"]
+	137 -> 138 [label=true]
+	141 [label="when heat-index IS GREATER THAN 80
+"]
+	142 [label="compute heat-index rounded = negative-one * cf1 + cf2 * outside-temp + cf3 * relative-humidity - cf4 * outside-temp * relative-humidity - cf5 * outside-temp ** 2 - cf6 * relative-humidity ** 2 + cf7 * outside-temp ** 2 * relative-humidity + cf8 * outside-temp * relative-humidity ** 2 - cf9 * outside-temp ** 2 * relative-humidity ** 2
+"]
+	141 -> 142 [label=true]
+	137 -> 141 [label=false]
+	134 -> 137 [label=false]
+	133 -> 134 [label="evaluate when"]
+	132 -> 133 [label="sequential next"]
+	131 -> 132 [label="sequential next"]
+	129 -> 131 [label=false]
+	127 -> 129 [label=false]
+	125 -> 127 [label=false]
+	124 -> 125 [label="sequential next"]
+	122 -> 124 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"outside-temp" [label="outside-temp"]
+	"outside-temp" -> 122 [label=start]
+	node [color=lightblue shape=box style=filled]
+	149 [label="if outside-temp < min-temp
+"]
+	150 [label="display \"Temperature \" too-small min-temp \" degF.\"
+"]
+	149 -> 150 [label=true]
+	152 [label="if relative-humidity < min-rh
+"]
+	153 [label="display \"Relative humidity \" too-small min-rh \"%.\"
+"]
+	152 -> 153 [label=true]
+	149 -> 152 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"too-small" [label="too-small"]
+	"too-small" -> 149 [label=start]
+	node [color=lightblue shape=box style=filled]
+	159 [label="accept relative-humidity-in
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"relative-humidity-in" [label="relative-humidity-in"]
+	"relative-humidity-in" -> 159 [label=start]
+	node [color=lightblue shape=box style=filled]
+	164 [label="if function test-numval ( relative-humidity-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(relative-humidity-in)" [label="functiontest-numval(relative-humidity-in)"]
+	"functiontest-numval(relative-humidity-in)" -> 164 [label=start]
+	node [color=lightblue shape=box style=filled]
+	170 [label="if outside-temp > max-temp
+"]
+	171 [label="display \"Temperature \" too-much max-temp \" degF.\"
+"]
+	170 -> 171 [label=true]
+	173 [label="if relative-humidity > max-rh
+"]
+	174 [label="display \"Relative humidity \" too-much max-rh \"%.\"
+"]
+	173 -> 174 [label=true]
+	170 -> 173 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"too-much" [label="too-much"]
+	"too-much" -> 170 [label=start]
+	node [color=lightblue shape=box style=filled]
+	180 [label="if function test-numval ( outside-temp-in ) IS NOT EQUAL ZERO
+"]
+	181 [label="display \"Temperature \" not-numeric
+"]
+	180 -> 181 [label=true]
+	183 [label="if function test-numval ( relative-humidity-in ) IS NOT EQUAL ZERO
+"]
+	184 [label="display \"Relative humidity \" not-numeric
+"]
+	183 -> 184 [label=true]
+	180 -> 183 [label=false]
+	node [color=lightgrey shape=diamond style=filled]
+	"not-numeric" [label="not-numeric"]
+	"not-numeric" -> 180 [label=start]
+	node [color=lightblue shape=box style=filled]
+	190 [label="if function test-numval ( outside-temp-in ) IS NOT EQUAL ZERO
+"]
+	node [color=lightgrey shape=diamond style=filled]
+	"functiontest-numval(outside-temp-in)" [label="functiontest-numval(outside-temp-in)"]
+	"functiontest-numval(outside-temp-in)" -> 190 [label=start]
+	node [color=lightblue shape=box style=filled]
+	195 [label="if outside-temp < min-temp
+"]
+	196 [label="display \"Temperature \" too-small min-temp \" degF.\"
+"]
+	195 -> 196 [label=true]
+	node [color=lightgrey shape=diamond style=filled]
+	"min-temp" [label="min-temp"]
+	"min-temp" -> 195 [label=start]
+	node [color=lightblue shape=box style=filled]
+	201 [label="move outside-temp to outside-temp-out
+"]
+	202 [label="display \"Outdoor Temperature: \" outside-temp-out \" degF\"
+"]
+	201 -> 202 [label="sequential next"]
+	node [color=lightgrey shape=diamond style=filled]
+	"outside-temp-out" [label="outside-temp-out"]
+	"outside-temp-out" -> 201 [label=start]
+}

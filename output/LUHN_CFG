@@ -1,0 +1,96 @@
+digraph cluster {
+	graph [label=test]
+	1 [label="100-MAIN .
+ 
+"]
+	2 [label="MOVE CC-NUM ( 16 : 1 ) TO CHECK-DIGIT
+"]
+	3 [label="MOVE FUNCTION REVERSE ( CC-NUM ) TO TEST-NUM
+"]
+	4 [label="PERFORM 200-LUHN
+"]
+	6 [label="PERFORM 300-SHOW-RESULTS
+"]
+	31 [label="STOP RUN
+"]
+	6 -> 31 [label="perform-exit"]
+	32 [label="300-SHOW-RESULTS .
+ 
+"]
+	33 [label="DISPLAY \"CC-NUM: \" CC-NUM WITH NO ADVANCING
+"]
+	34 [label="DISPLAY SPACES
+"]
+	35 [label="IF PASS
+"]
+	36 [label="DISPLAY \" VALID\"
+"]
+	36 -> 6 [label="sequential next"]
+	35 -> 36 [label=true]
+	38 [label="DISPLAY \" INVALID\"
+"]
+	38 -> 6 [label="sequential next"]
+	35 -> 38 [label=false]
+	34 -> 35 [label="sequential next"]
+	33 -> 34 [label="sequential next"]
+	32 -> 33 [label="sequential next"]
+	6 -> 32 [label="procedure call"]
+	4 -> 6 [label="perform-exit"]
+	7 [label="200-LUHN .
+ 
+"]
+	8 [label="MOVE 1 TO ODD-IDX
+"]
+	9 [label="MOVE 1 TO EVEN-IDX
+"]
+	10 [label="PERFORM VARYING DIGIT-COUNTER FROM 1 BY 1 UNTIL DIGIT-COUNTER IS GREATER THAN 16
+"]
+	11 [label="IF FUNCTION MOD ( DIGIT-COUNTER 2 ) IS EQUAL TO ZERO
+"]
+	13 [label="MOVE TEST-NUM ( DIGIT-COUNTER : 1 ) TO EVEN-DIGIT ( EVEN-IDX )
+"]
+	16 [label="ADD 1 TO EVEN-IDX
+"]
+	16 -> 10 [label="sequential next"]
+	13 -> 16 [label="sequential next"]
+	11 -> 13 [label=true]
+	15 [label="MOVE TEST-NUM ( DIGIT-COUNTER : 1 ) TO ODD-DIGIT ( ODD-IDX )
+"]
+	18 [label="ADD ODD-DIGIT ( ODD-IDX ) TO CHECKSUM
+"]
+	19 [label="ADD 1 TO ODD-IDX
+"]
+	19 -> 10 [label="sequential next"]
+	18 -> 19 [label="sequential next"]
+	15 -> 18 [label="sequential next"]
+	11 -> 15 [label=false]
+	10 -> 11 [label=iteration]
+	12 [label="PERFORM VARYING EVEN-IDX FROM 1 BY 1 UNTIL EVEN-IDX IS GREATER THAN 8
+"]
+	21 [label="MULTIPLY EVEN-DIGIT ( EVEN-IDX ) BY 2 GIVING DBL-DIGIT ( EVEN-IDX )
+"]
+	23 [label="IF DBL-DIGIT ( EVEN-IDX ) IS GREATER THAN 9
+"]
+	24 [label="SUBTRACT 9 FROM DBL-DIGIT ( EVEN-IDX )
+"]
+	25 [label="ADD DBL-DIGIT ( EVEN-IDX ) TO CHECKSUM
+"]
+	25 -> 12 [label="sequential next"]
+	24 -> 25 [label="sequential next"]
+	23 -> 24 [label=true]
+	23 -> 25 [label=false]
+	21 -> 23 [label="sequential next"]
+	12 -> 21 [label=iteration]
+	22 [label="COMPUTE PASS-FAIL = FUNCTION MOD ( CHECKSUM 10 )
+"]
+	22 -> 4 [label="sequential next"]
+	12 -> 22 [label="perform-exit"]
+	10 -> 12 [label="perform-exit"]
+	9 -> 10 [label="sequential next"]
+	8 -> 9 [label="sequential next"]
+	7 -> 8 [label="sequential next"]
+	4 -> 7 [label="procedure call"]
+	3 -> 4 [label="sequential next"]
+	2 -> 3 [label="sequential next"]
+	1 -> 2 [label="sequential next"]
+}
