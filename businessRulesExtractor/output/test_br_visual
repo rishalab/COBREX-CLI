@@ -1,3 +1,0 @@
-digraph cluster {
-	graph [label=test]
-}

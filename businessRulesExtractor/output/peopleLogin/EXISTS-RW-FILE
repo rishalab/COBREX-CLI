@@ -1,9 +1,0 @@
-digraph cluster {
-	graph [label=test]
-	node [color=lightblue shape=box style=filled]
-	23 [label="WRITE EXISTS-RW-FILE
-"]
-	node [color=lightgrey shape=diamond style=filled]
-	"EXISTS-RW-FILE" [label="EXISTS-RW-FILE"]
-	"EXISTS-RW-FILE" -> 23 [label=start]
-}
