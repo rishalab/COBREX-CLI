@@ -43,58 +43,6 @@ Depth First Search (DFS) is performed on the CFG to identify and add the control
 ### 2. Business rules for the variables new-eff-in, pcteff, old-eff-in, neweff and oldeff present in FUELSAVE.cbl
 ![Business Rules](FUELSAVE_BRs.png)
 
-## What's inside the COBREX-CLI repository?
-Inside the businessRulesExtractor directory,
-
-"main.py" contains the main method "extractor" used for extracting
-    Business Rules from the input COBOL program. 
-"cobol_analyzer.py" contains a class used to perform static analysis
-on the input COBOL program. It is used to construct CFG and identify Business Rules.
-"cobol_cfg.py" contains classes used for building the Control Flow
-    Graph (CFG) of the COBOL code.
-"procedure_visitor.py" contains classes used to extract information on
-procedures(paragraphs/sections) present in the
-COBOL program.
-"data_division.py"  contains classes and code used to identify and store
-    the variables present in the data division of the input COBOL program.
-"model.py" contains support classes for building Control
-Flow Graph(CFG).
-"business_rules_extractor.py: contains classes used to extract and visualize business  rules
-using the CFG and the business variables.
-
-In the root directory,
-
-"extractor.py" is the starting point of execution.
-"preprocessor.py" contains functions for preprocessing the COBOL program.
-
-## Steps to install COBREX:
-1. Clone or download this github repository.
-
-2. Get into the main directory:
-```bash
-cd COBREX-CLI
-```
-
-3. Create and activate a new python3 virtual environment:
-```bash
-python(3) -m venv <path_to_env/env_name></path_to_env>
-```
-
-4. Install the requirements:
-```bash
-pip install -r requirements.txt
-```
-
-5. Install [GnuCOBOL](https://gnucobol.sourceforge.io)
-6. Install [Graphviz](https://graphviz.org/download/)
-
-
-## Steps to use COBREX:
-1. Run extractor.py along with the input COBOL program file path:
-```bash
-python3 extractor.py input_cobol_file_path
-```
-2. The output files will be placed in output folder in root directory.
 
 ## How to contribute to COBREX?
 We will be very happy to receive any kind of contributions. Incase of a bug or an enhancement idea or a feature improvement idea, please open an issue or a pull request. Incase of any queries or if you would like to give any suggestions, please feel free to contact Mir Sameed Ali (cs18b021@iittp.ac.in) or Nikhil M (cs18b041@iittp.ac.in) or Sridhar Chimalakonda (ch@iittp.ac.in) of RISHA Lab, IIT Tirupati, India.
